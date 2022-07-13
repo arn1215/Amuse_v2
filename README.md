@@ -32,7 +32,7 @@ https://amuse-app.herokuapp.com/
 ## Getting Started
 - Clone this repository:
 
-   git clone [https://github.com/arn1215/Ali-Naqvi-Amuse.git](https://github.com/arn1215/amuse-app.git)
+   git clone https://github.com/arn1215/Amuse_v2.git
 
 - Install dependencies from the root directory.
 
