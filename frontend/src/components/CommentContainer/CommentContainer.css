@@ -1,0 +1,116 @@
+.comment-container {
+    
+    word-break: break-all;
+    width: 900px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    overflow-y: none;
+    overflow-x: none;
+    padding: 20px;
+}
+
+/* .comment p {
+    min-width: 680px;
+    margin-right: 20px;
+
+} */
+
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+li.comment p {
+    color: aliceblue !important;
+    font-weight: 400;
+    overflow-y: scroll;
+    overflow-x: none;
+    max-height: 148px;
+
+}
+
+
+button.commentButton {
+    width: 60px;
+    margin-left: 30px;
+    border: none;
+    border-radius: 5px;
+    width: 60px;
+    height: 30px;
+    background-color: rgb(45, 90, 129);
+    color: aliceblue;
+    transition-property: all;
+    transition-duration: .5s;
+    cursor: pointer;
+    margin: 10px;
+}
+
+
+
+button.commentButton:hover {
+    background-color: crimson;
+}
+
+button.commentButton.edit1:hover {
+    background-color: rgb(223, 107, 30);
+    ;
+}
+
+.sign-up-button.form {
+    align-self: flex-end;
+}
+
+.commentForm {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.commentForm input {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    border-radius: 4px;
+    border: solid 1px black;
+
+}
+
+
+/* @keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+
+    50% {
+        transform: translatey(-20px);
+    }
+
+    100% {
+        transform: translatey(0px);
+    }
+}
+
+@keyframes float2 {
+    0% {
+        line-height: 30px;
+        transform: translatey(0px);
+    }
+
+    55% {
+        transform: translatey(-20px);
+    }
+
+    60% {
+        line-height: 10px;
+    }
+
+    100% {
+        line-height: 30px;
+        transform: translatey(0px);
+    }
+}
+ */
