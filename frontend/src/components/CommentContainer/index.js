@@ -50,7 +50,7 @@ const CommentContainer = ({ songId }) => {
                 <button className='sign-up-button form' type="submit">Submit</button>
             </form>}
             {!user &&
-                <p style={{ marginTop: '50px' }}>Sign in to an account to comment.</p>
+                <p style={{ marginTop: '50px', marginRight: '37%'}}>Sign in to an account to comment.</p>
             }
             <ul>
                 {user ?
