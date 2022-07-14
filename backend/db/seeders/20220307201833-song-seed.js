@@ -67,7 +67,75 @@ module.exports = {
         updatedAt: new Date(), 
         
       },
+      
+      // ==============================SEAN TURK==================================================================================
 
+      { 
+        songURL: 'https://amuse-bucket.s3.amazonaws.com/No+Drama.mp3',
+        title: 'Sean Turk - No Drama', 
+        imageUrl: 'https://amuse-bucket.s3.amazonaws.com/No+Drama.png', 
+        playlistId: null, 
+        userId: 26, 
+        createdAt: new Date(), 
+        updatedAt: new Date(), 
+        
+      },
+      
+      { 
+        songURL: 'https://amuse-bucket.s3.amazonaws.com/Villains.mp3',
+        title: 'Sean Turk - Villains', 
+        imageUrl: 'https://amuse-bucket.s3.amazonaws.com/Villains.png', 
+        playlistId: null, 
+        userId: 26, 
+        createdAt: new Date(), 
+        updatedAt: new Date(), 
+        
+      },
+      // ===========ABHIDIJON===============
+      { 
+        songURL: 'https://amuse-bucket.s3.amazonaws.com/Ignore.mp3',
+        title: 'Abhi//Dijon - Ignore', 
+        imageUrl: 'https://amuse-bucket.s3.amazonaws.com/Ignore+Abhi_Dijon.png', 
+        playlistId: null, 
+        userId: 27, 
+        createdAt: new Date(), 
+        updatedAt: new Date(), 
+        
+      },
+
+      { 
+        songURL: 'https://amuse-bucket.s3.amazonaws.com/Often.mp3',
+        title: 'Abhi//Dijon - Often', 
+        imageUrl: 'https://amuse-bucket.s3.amazonaws.com/Ignore+Abhi_Dijon.png', 
+        playlistId: null, 
+        userId: 27, 
+        createdAt: new Date(), 
+        updatedAt: new Date(), 
+        
+      },
+
+      // =======================RICKY RETRO===============================================
+      { 
+        songURL: 'https://amuse-bucket.s3.amazonaws.com/in+luv+with+the+rik.mp3',
+        title: 'Ricky Retro - in luv with the rik', 
+        imageUrl: 'https://amuse-bucket.s3.amazonaws.com/in+luv+with+the+rik.png', 
+        playlistId: null, 
+        userId: 28, 
+        createdAt: new Date(), 
+        updatedAt: new Date(), 
+        
+      },
+      
+      { 
+        songURL: `https://amuse-bucket.s3.amazonaws.com/can't+u+see.mp3`,
+        title: 'Ricky Retro - cant u see', 
+        imageUrl: `https://amuse-bucket.s3.amazonaws.com/can't+u+see.png`, 
+        playlistId: null, 
+        userId: 28, 
+        createdAt: new Date(), 
+        updatedAt: new Date(), 
+        
+      },
 
     ], {});
   },

@@ -138,6 +138,23 @@ module.exports = {
         email: 'kaytranada@hotmail.com'
       } ,
 
+      {
+        username: 'SeanTurk',
+        hashedPassword: bcrypt.hashSync('password'),
+        email: 'SeanTurk@hotmail.com'
+      } ,
+      
+      {
+        username: 'Abhi//Dijon',
+        hashedPassword: bcrypt.hashSync('password'),
+        email: 'abhi@hotmail.com'
+      } ,
+      
+      {
+        username: 'Ricky Retro',
+        hashedPassword: bcrypt.hashSync('password'),
+        email: 'RickyRetro@hotmail.com'
+      } ,
     ], {});
   },
 
