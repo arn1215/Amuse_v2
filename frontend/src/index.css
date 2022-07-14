@@ -204,12 +204,12 @@ a.link {
   height: 380px;
   width: 380px;
   -webkit-animation: anvil 0.18s cubic-bezier(0.38, 0.1, 0.36, 0.9);
+  border-radius: 7px 7px 0px 0px;
 
 
 }
 .page-container {
-  
-  
+  border-radius: 9px;
   display: flex;
   flex-direction: column;
   margin-top: 10%;
