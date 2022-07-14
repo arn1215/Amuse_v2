@@ -377,6 +377,10 @@ div.song-container:hover {
 
 }
 
+.song-container img {
+  border-radius: 2px;
+}
+
 div.song-container {
   border-radius: 2px;
   padding: 10px;
