@@ -37,6 +37,7 @@ const ProfileComponent = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [currentSong, setCurrentSong] = useState("")
+    const [isPlaying, setIsPlaying] = useState(false)
     const revSongList = useSelector((state) => Object?.values(state?.songs))
     const songList = revSongList.reverse()
 
@@ -49,7 +50,10 @@ const ProfileComponent = () => {
     }, [dispatch])
 
 
-
+    const playOnClick = (song) => {
+     setCurrentSong(song)
+     setIsPlaying(!isPlaying)
+    }
 
 
 
@@ -100,7 +104,13 @@ const ProfileComponent = () => {
                                             </p>
                                         </div>
                                         <div className="play-button">
-                                            <p className="play-button" key={song?.id}><FaPlayCircle className="play-button" onClick={() => setCurrentSong(song)} /></p>
+                                            {!isPlaying && 
+                                            <p className="play-button" key={song?.id}><FaPlayCircle className="play-button" onClick={() => playOnClick(song)} /></p>
+                                            }
+                                            {currentSong.id === song.id && isPlaying && 
+                                            <p className="play-button" key={song?.id}><FaPauseCircle className="play-button" onClick={() => setCurrentSong(null)} /></p>
+                                            
+                                            }
                                         </div>
                                     </div>
                                 </div> : null
