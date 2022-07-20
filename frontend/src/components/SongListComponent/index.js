@@ -52,7 +52,7 @@ const ProfileComponent = () => {
 
     const playOnClick = (song) => {
      setCurrentSong(song)
-     setIsPlaying(!isPlaying)
+     setIsPlaying(true)
     }
 
 
@@ -104,12 +104,9 @@ const ProfileComponent = () => {
                                             </p>
                                         </div>
                                         <div className="play-button">
-                                            {!isPlaying && 
-                                            <p className="play-button" key={song?.id}><FaPlayCircle className="play-button" onClick={() => playOnClick(song)} /></p>
-                                            }
-                                            {currentSong.id === song.id && isPlaying && 
-                                            <p className="play-button" key={song?.id}><FaPauseCircle className="play-button" onClick={() => setCurrentSong(null)} /></p>
-                                            
+
+                                            {currentSong.id === song.id && isPlaying ? 
+                                            null : <p className="play-button" key={song?.id}><FaPlayCircle className="play-button" onClick={() => playOnClick(song)} /></p>                                   
                                             }
                                         </div>
                                     </div>
