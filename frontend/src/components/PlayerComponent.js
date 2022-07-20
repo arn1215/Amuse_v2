@@ -5,12 +5,13 @@ import 'react-h5-audio-player/lib/styles.css'
 
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
 import Footer from './FooterComponent'
+import { useParams } from 'react-router-dom';
 
 
 
 const Player = ({ currentSong, bool, childFunc, childFunc2 }) => {
     
-    
+    const params = useParams()
     let title = currentSong?.title
     let image = currentSong?.imageUrl
 
@@ -22,7 +23,7 @@ const Player = ({ currentSong, bool, childFunc, childFunc2 }) => {
         <>
             
             <AudioPlayer
-                autoPlay={false}
+                autoPlay={ params.songId ? true : false}
                 className='h5'
                 src={ currentSong ? currentSong.songURL : null }
                 layout="stacked-reverse"
