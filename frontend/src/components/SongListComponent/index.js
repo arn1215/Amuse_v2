@@ -63,15 +63,15 @@ const ProfileComponent = () => {
             <div className='background'>
                 <div className='white-background'>
                     <div className='feed-title'>
-                        <div className='text'>
+                        <div className='banner-container'>
+                            <img src="https://amuse-bucket.s3.amazonaws.com/alexander-popov-hTv8aaPziOQ-unsplash.png" alt="banner" />
+                            <div className='centered'>
+                                <h2 style={{color: "white"}}>
+                                What's next in music is first on amuse.
+                                </h2>
+                                <p style={{color: "white", maxWidth: "800px"}} >Upload your first track and begin your journey. Amuse gives you space to create, find your fans, and connect with other artists.</p>
+                            </div>
                         </div>
-                        <img src="https://amuse-bucket.s3.amazonaws.com/vishnu-r-nair-m1WZS5ye404-unsplash.jpg" alt="banner"></img>
-                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '0px'}}>
-                            <h2>
-                            What's next in music is first on amuse.
-                            </h2>
-                            <p>Upload your first track and begin your journey. Amuse gives you space to create, find your fans, and connect with other artists.</p>
-                        </div>                     
                         <h3 className='recent'>Recently Added</h3>
                         <Carousel
                             swipeable={false}

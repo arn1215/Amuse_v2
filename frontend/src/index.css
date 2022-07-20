@@ -10,9 +10,7 @@
 
 }
 
-label {
- 
-}
+label {}
 
 button {
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.13);
@@ -143,7 +141,7 @@ body {
   margin: 0;
   padding: 0px;
   position: absolute;
-  
+
   /* top: 0; */
 
 }
@@ -208,6 +206,7 @@ a.link {
 
 
 }
+
 .page-container {
   border-radius: 9px;
   display: flex;
@@ -270,9 +269,7 @@ textarea {
   }
 }
 
-.scroll-div {
- 
-}
+.scroll-div {}
 
 .footer {
   width: 100%;
@@ -327,9 +324,27 @@ li {
 }
 
 
+.banner-container {
+
+  position: relative;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .error {
   color: red;
 }
+
 .error.upload {
   margin: 20px;
 }
@@ -479,7 +494,7 @@ input[type="file"] {
   width: 50%;
   display: flex;
   align-items: center;
-  
+
   overflow: hidden;
   box-shadow: none;
   border-radius: 0px 4px 4px 0px;
@@ -491,7 +506,7 @@ input[type="file"] {
 
 .img-preview {
   width: 400px;
-  height: 400px; 
+  height: 400px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -501,7 +516,7 @@ input[type="file"] {
 }
 
 .upload-container {
-  
+
   width: 900px;
   height: 400px;
   margin-top: 10%;
@@ -530,8 +545,8 @@ input[type="file"] {
 }
 
 .sign-up-button.upload {
-  
-   background-color: #f50;
+
+  background-color: #f50;
   border-color: #f50;
   color: #fff;
   height: 26px;
@@ -542,10 +557,10 @@ input[type="file"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
 }
 
-.background.white-background label  {
+.background.white-background label {
   margin: 0 !important;
   border: solid 1px black;
   background-color: #f50;
@@ -641,7 +656,7 @@ form .sign-up-button {
 
 .react-multiple-carousel__arrow--left {
   margin-left: -4%;
-  
+
 }
 
 .react-multiple-carousel__arrow--right {
@@ -1069,7 +1084,7 @@ div.song-list {
   margin-top: 3%;
   width: 75%;
   font-size: 12px;
- 
+
 
 }
 
@@ -1160,7 +1175,7 @@ form .demo {
   justify-content: space-between;
   width: 200px;
   margin-left: -4.2%;
-  
+
 }
 
 li.errors {
@@ -1181,7 +1196,7 @@ li.errors {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  
+
 }
 
 
