@@ -1,11 +1,7 @@
 /* TODO Add site wide styles */
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100&family=Roboto&display=swap');
 
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Overpass', sans-serif;
   color: rgb(39, 39, 39);
 
 }
@@ -216,6 +212,7 @@ a.link {
   background: linear-gradient(-45deg, #e38f4b, #ff790b, #d54c23, #d5b423);
   background-size: 400% 400%;
   animation: gradient 8s ease infinite;
+  
 }
 
 textarea {
@@ -432,15 +429,15 @@ div.song-container {
 
 
 p.title {
-  margin-top: 100%;
+  margin-top: 80px;
 }
 
 .title {
   /* visibility: hidden; */
-  width: 100px;
+  width: 200px;
   height: 120px;
-  overflow-y: hidden;
-  font-family: 'Major Mono Display', monospace;
+  
+  font-family: 'Overpass', sans-serif;
   font-size: 12px;
   font-weight: bold;
   color: rgb(34, 33, 33);
@@ -1013,7 +1010,7 @@ form .sign-up-button {
   color: aliceblue;
   position: absolute;
 
-  font-family: 'Inter', sans-serif;
+  font-family: 'Overpass', sans-serif;
 
   text-align: center;
   margin-top: 100px;
@@ -1024,7 +1021,7 @@ form .sign-up-button {
   position: absolute;
   width: 390px;
   margin-left: 52px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Overpass', sans-serif;
   margin-top: 220px;
   font-weight: bold;
   text-align: center;
