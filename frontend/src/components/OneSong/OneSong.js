@@ -48,7 +48,7 @@ const OneSong = () => {
             <Link to={`/users/${song?.userId}`}>See more from this artist!</Link>
             {/* <button className="playerButtons" style={{all: 'unset', backgroundColor: '', height: 'fit-content'}}onClick={() => childFunc.current()}><FaPlay  /></button>
             <button className="playerButtons" style={{all: 'unset', backgroundColor: '', height: 'fit-content'}} onClick={() => childFunc2.current()}><FaPauseCircle  /></button> */}
-            {/* <LikeComponent song={song} songId={song?.id} /> */}
+            <LikeComponent song={song} songId={song?.id} /> 
             <p>{song?.createdAt?.slice(0, 10).replaceAll("-", " ")}</p>   
           </div>
         </div>

@@ -435,8 +435,6 @@ p.title {
 .title {
   /* visibility: hidden; */
   width: 200px;
-  height: 120px;
-  
   font-family: 'Overpass', sans-serif;
   font-size: 12px;
   font-weight: bold;
@@ -653,12 +651,13 @@ form .sign-up-button {
 
 .react-multiple-carousel__arrow--left {
   margin-left: -4%;
+  margin-top: -7%;
 
 }
 
 .react-multiple-carousel__arrow--right {
   margin-right: -4%;
-  margin-top: 0%;
+  margin-top: -7%;
 }
 
 .rhap_container:focus:not(:focus-visible) {

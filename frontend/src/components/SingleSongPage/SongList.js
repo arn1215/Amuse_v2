@@ -35,18 +35,20 @@ const SongList = ({ song, userId, sessionUserId }) => {
     return (
         <>
             <div className={`scroll-div ${song.id}`} >
-                <div className="title">
-                    <p className="title" key={song.id}>{song.title}</p>
-                </div>
-                <Link to={`/songs/${song.id}`}>
-                    <div className='song-container card'>
-                        <div className="flex-container">
-                            <img src={song.imageUrl || require('./image.png')} />
-                            <div className='image__overlay'>
+                <div className='title-container'>
+                    <div className="title">
+                        <p className="title" key={song.id}>{song.title}</p>
+                    </div>
+                    <Link to={`/songs/${song.id}`}>
+                        <div className='song-container card'>
+                            <div className="flex-container">
+                                <img src={song.imageUrl || require('./image.png')} />
+                                <div className='image__overlay'>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </Link>
+                    </Link>
+                </div>
                 {sessionUserId === +userId &&
                     <div style={{ display: 'flex', margin: "30px", width: "100px", alignItems: 'center', justifyContent: "space-around" }}>
                         <EditFormModal id={song.id} song={song} className='loginForm crud edit' />
