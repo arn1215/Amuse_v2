@@ -43,9 +43,7 @@ const LikeComponent = ({song}) => {
         }
         console.log(likeList)
     }
-    
-    
-    
+
     return (
         userId ? 
         <div>
