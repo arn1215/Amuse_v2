@@ -18,6 +18,24 @@ const DELETE_SONG = 'songs/deleteSong'
 
 const EDIT_SONG = 'songs/editSong'
 
+const LIKED_SONGS = "songs/likedSongs"
+
+export const likedSongs = (likes) => ({
+    type: LIKED_SONGS,
+    likes
+})
+
+export const fetchLikedSongs = (id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/songs/likes/${id}`)
+
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(likedSongs(data))
+        return data
+    }
+
+}
+
 export const clearSong = () => ({
     type: CLEAR_SONG
 })
@@ -146,7 +164,7 @@ export const updateSong = (song) => async (dispatch) => {
     return songToUpdate
 }
 
-const initialState = { userSongs: {} }
+const initialState = { userSongs: {}, likedSongs: {} }
 
 export const songReducer = (state = initialState, action) => {
     let newState;
@@ -164,6 +182,14 @@ export const songReducer = (state = initialState, action) => {
                     newState[song.id] = song;
                 }
             });
+            return newState
+        case LIKED_SONGS:
+            newState = { ...state,};
+            action.likes.forEach(song => {
+                if (!state.likedSongs[song.id]) {
+                    newState.likedSongs[song.id] = song.Song
+                }
+            })
             return newState
         case GET_SONG:
             newState = { ...state }

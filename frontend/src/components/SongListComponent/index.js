@@ -1,7 +1,7 @@
 import './songListStyles.css'
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearSong, clearSongs, fetchSongs } from "../../store/song";
+import { clearSong, clearSongs, fetchLikedSongs, fetchSongs, likedSongs } from "../../store/song";
 import CommentContainer from '../CommentContainer';
 import LikeComponent from '../LikeComponent';
 import { FaPauseCircle, FaPlayCircle } from 'react-icons/fa'
@@ -39,6 +39,7 @@ const ProfileComponent = () => {
     const [currentSong, setCurrentSong] = useState("")
     const [isPlaying, setIsPlaying] = useState(false)
     const revSongList = useSelector((state) => Object?.values(state?.songs))
+    const user = useSelector(state => state.session.user);
     const songList = revSongList.reverse()
 
     useEffect(() => {
@@ -46,6 +47,8 @@ const ProfileComponent = () => {
   
         dispatch(clearSong())
         dispatch(fetchSongs())
+        dispatch(fetchLikedSongs(user.id))
+
 
     }, [dispatch])
 

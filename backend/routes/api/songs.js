@@ -131,6 +131,17 @@ router.delete('/:songId', asyncHandler(async (req, res) => {
 
 }))
 
+// ===================GET USERS LIKED SONGS======================
+
+router.get("/likes/:id", asyncHandler(async(req,res) => {
+    const userId = req.params.id
+    const songs = await Like.findAll({
+        where: { userId: userId },
+        include: Song,   
+    })
+    
+    return res.json(songs)
+}))
 
 
 

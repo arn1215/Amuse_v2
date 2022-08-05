@@ -84,15 +84,6 @@ router.delete('/', asyncHandler(async(req, res) => {
 
 
 
-router.get("/user", asyncHandler(async(req,res) => {
-    const userId = parseInt(req.params.userId, 10)
-    const songs = await Like.findAll({
-        where: { userId: userId },
-        include: Song,   
-    })
-    
-    return res.json(songs)
-}))
 
 
 
