@@ -45,7 +45,7 @@ router.post("/", asyncHandler(async (req,res) => {
         }
     }) 
     if (likes.length > 0) {
-        return "Already liked"
+        return null
     } else {
 
         const like = await Like.create(req.body)
