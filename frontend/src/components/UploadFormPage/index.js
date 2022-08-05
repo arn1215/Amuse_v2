@@ -14,7 +14,7 @@ const UploadFormPage = () => {
     const [bucketSong, setBucketSong] = useState("")
     const [selectedFile, setSelectedFile] = useState(null);
     const [errors, setErrors] = useState([]);
-    
+
 
 
     const [success, setSuccess] = useState("pending")
@@ -167,63 +167,62 @@ const UploadFormPage = () => {
 
 
     return (
-        <div className="background">
-            <div className="white-background upload">
-                <div className="upload-container">
-                    <div className="img-preview" style={{ backgroundImage: `url("${imageUrl}")`, backgroundSize: "cover" }} >
-                        <p>Image preview</p>
-                        <label>
+        <div className="upload">
 
-                            <div className="sign-up-button image">
+            <div className="upload-container">
+                <div className="img-preview" style={{ backgroundImage: `url("${imageUrl}")`, backgroundSize: "cover" }} >
+                    <p>Image preview</p>
+                    <label>
+
+                        <div className="sign-up-button image">
+                            <input type="file"
+                                name="image"
+                                onChange={e => {
+                                    s3Upload(e.target.files[0], "image");
+                                    setImageUrl(e.target.files[0].name)
+                                }}
+                            />
+                            Upload
+                        </div>
+                    </label>
+                </div>
+                <form
+                    className="loginForm upload"
+                // onSubmit={handleSubmit}
+                >
+                    {errors.length > 0 &&
+                        errors.map((error) => <div className="error upload" key={error}>{error}</div>)}
+                    <input
+                        type="text"
+                        placeholder="title"
+                        value={title}
+                        onChange={titleEvent}
+                    />
+                    {success === "pending" ?
+                        <label>
+                            <div className="sign-up-button upload">
                                 <input type="file"
-                                    name="image"
+                                    name="song"
                                     onChange={e => {
-                                        s3Upload(e.target.files[0], "image");
-                                        setImageUrl(e.target.files[0].name)
+                                        s3Upload(e.target.files[0], e.target.name);
+                                        setSelectedFile(e.target.files[0].name)
                                     }}
                                 />
-                                Upload
+                                Select a File
                             </div>
-                        </label>
-                    </div>
-                    <form
-                        className="loginForm upload"
-                    // onSubmit={handleSubmit}
-                    >
-                        {errors.length > 0 &&
-                            errors.map((error) => <div className="error upload" key={error}>{error}</div>)}
-                        <input
-                            type="text"
-                            placeholder="title"
-                            value={title}
-                            onChange={titleEvent}
-                        />
-                        {success === "pending" ?
-                            <label>
-                                <div className="sign-up-button upload">
-                                    <input type="file"
-                                        name="song"
-                                        onChange={e => {
-                                            s3Upload(e.target.files[0], e.target.name);
-                                            setSelectedFile(e.target.files[0].name)
-                                        }}
-                                    />
-                                    Select a File
-                                </div>
-                                <p>{selectedFile}</p>
-                            </label> :
-                            <div
-                                className='sign-up-button done'
-                                onClick={handleFileInput}
-                            >
-                                Upload Song
-                            </div>
-                        }
-                    </form>
-                </div>
+                            <p>{selectedFile}</p>
+                        </label> :
+                        <div
+                            className='sign-up-button done'
+                            onClick={handleFileInput}
+                        >
+                            Upload Song
+                        </div>
+                    }
+                </form>
             </div>
+        </div>
 
-        </div >
     );
 };
 
