@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator')
 const { handleValidationErrors } = require('../../utils/validation')
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Song } = require('../../db/models');
+const { User, Song, Like } = require('../../db/models');
 
 
 const router = express.Router();
@@ -78,6 +78,7 @@ router.get('/:userId',  asyncHandler(async (req, res) => {
 
 
 
+// ================GET A USERS LIKED SONGS==========================
 
 
 

@@ -1,7 +1,7 @@
 
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Song } = require('../../db/models');
+const { Song, Like } = require('../../db/models');
 const { handleValidationErrors } = require('../../utils/validation')
 const { check } = require('express-validator')
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
@@ -130,5 +130,12 @@ router.delete('/:songId', asyncHandler(async (req, res) => {
 
 
 }))
+
+
+
+
+
+
+
 
 module.exports = router;

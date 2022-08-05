@@ -77,7 +77,7 @@ export const likeReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_LIKE:
             newState = { ...state }
-            newState[action.like.id] = action.like
+            newState[action.like.like.id] = action.like.like
             return newState
         case DELETE_LIKE:
             newState = { ...state }
@@ -85,7 +85,7 @@ export const likeReducer = (state = initialState, action) => {
             return newState
         case GET_SONG_LIKES:
             newState = { ...state };
-            action.likes.forEach(like => {
+            action.likes.rows.forEach(like => {
                 if (!state[like.id]) {
                     newState[like.id] = like;
                 }

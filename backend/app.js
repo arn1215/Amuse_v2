@@ -26,18 +26,18 @@ app.use(
   helmet.crossOriginResourcePolicy({ 
     policy: "cross-origin" 
   })
-);
+ );
 
 // Set the _csrf token and create req.csrfToken method
-// app.use(
-//   csurf({
-//     cookie: {
-//       secure: isProduction,
-//       sameSite: isProduction && "Lax",
-//       httpOnly: true
-//     }
-//   })
-// );         
+/*  app.use(
+   csurf({
+     cookie: {
+       secure: isProduction,
+       sameSite: isProduction && "Lax",
+       httpOnly: true
+     }
+   })
+ );        */
 app.use(routes); // Connect all the routes
 
 // Catch unhandled requests and forward to error handler.

@@ -23,7 +23,7 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     dispatch(fetchSongComments())
-    dispatch(fetchSongsLikes())
+  
   }, [dispatch]);
 
   return (

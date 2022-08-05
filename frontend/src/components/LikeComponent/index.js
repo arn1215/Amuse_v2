@@ -13,12 +13,9 @@ const LikeComponent = ({song}) => {
     const likeList = useSelector((state) => Object.values(state.likes).filter(like => like.songId === songId).length)
 
     useEffect(() => {
-        console.log(likeList)
+        console.log(songId)
         console.log(song, "THIS THE SONG")
-        setTimeout(() => {
-            dispatch(fetchSongsLikes(songId)) 
-        }, 1000);
-       
+        dispatch(fetchSongsLikes(songId))      
     }, [dispatch])
     
     // const singleSongLikes = likeList.filter(like => like.songId === songId)

@@ -10,12 +10,16 @@ const { Like } = require('../../db/models');
 
 const router = express.Router()
 
-//================Get all Likes =========================
+//================Get all likes for a song =========================
 
 router.get("/:songId", asyncHandler(async(req,res) => {
     const songId = req.params.songId
 
-    const likes = await Like.findAll();
+    const likes = await Like.findAndCountAll({
+        where: {
+          songId
+        }
+    });
 
     res.json(likes)
 
@@ -45,14 +49,16 @@ router.post("/", asyncHandler(async (req,res) => {
         }
     }) 
     if (likes.length > 0) {
-        return null
+        likes.forEach(like => {
+
+            like.destroy()
+        })
+        return res.json("Unliked")
     } else {
 
         const like = await Like.create(req.body)
-        res.json({like})
+        return res.json({like})
     }
-
-
 }))
 
 
@@ -78,6 +84,15 @@ router.delete('/', asyncHandler(async(req, res) => {
 
 
 
+router.get("/user", asyncHandler(async(req,res) => {
+    const userId = parseInt(req.params.userId, 10)
+    const songs = await Like.findAll({
+        where: { userId: userId },
+        include: Song,   
+    })
+    
+    return res.json(songs)
+}))
 
 
 
