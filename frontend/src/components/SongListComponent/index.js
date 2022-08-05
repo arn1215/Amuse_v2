@@ -41,6 +41,8 @@ const ProfileComponent = () => {
     const revSongList = useSelector((state) => Object?.values(state?.songs))
     const user = useSelector(state => state.session.user);
     const songList = revSongList.reverse()
+    const revLikeList = useSelector((state) => Object?.values(state?.songs.likedSongs))
+    const likeList = revLikeList.reverse()
 
     useEffect(() => {
   
@@ -76,6 +78,8 @@ const ProfileComponent = () => {
                             </div>
                         </div>
                         <h3 className='recent'>Recently Added</h3>
+                        <div>
+
                         <Carousel
                             swipeable={false}
                             draggable={false}
@@ -89,7 +93,7 @@ const ProfileComponent = () => {
                             removeArrowOnDeviceType={["tablet", "mobile"]}
                             dotListClass="custom-dot-list-style"
                             itemClass="carousel-item-padding-40-px"
-                        >
+                            >
                             {songList.map(song => (
                                 song && song.title ?
                                 <div key={song?.id}>
@@ -110,12 +114,57 @@ const ProfileComponent = () => {
 
                                             {currentSong.id === song.id && isPlaying ? 
                                             null : <p className="play-button" key={song?.id}><FaPlayCircle className="play-button" onClick={() => playOnClick(song)} /></p>                                   
-                                            }
+                                        }
                                         </div>
                                     </div>
                                 </div> : null
                             ))}
                         </Carousel>
+                        </div>
+                        <h3 className='recent'>Liked Songs</h3>
+                        <div>
+
+                        <Carousel
+                            swipeable={false}
+                            draggable={false}
+                            responsive={responsive}
+                            arrows={true}
+                            autoPlay={false}
+                            autoPlaySpeed={90000000}
+                            customTransition="all .5"
+                            transitionDuration={.1}
+                            containerClass="carousel-container"
+                            removeArrowOnDeviceType={["tablet", "mobile"]}
+                            dotListClass="custom-dot-list-style"
+                            itemClass="carousel-item-padding-40-px"
+                            >
+                            {likeList.map(song => (
+                                song && song.title ?
+                                <div key={song?.id}>
+                                    <div  className="scroll-div" >
+                                        <div className='song-container card' key={song?.id} onClick={() => history.push(`songs/${song?.id}`)} >
+                                            <div className="flex-container">
+                                                <img src={song?.imageUrl || require('./image.png')} />
+                                                <div className='image__overlay'>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className='title1'>
+                                            <p className='title1 p'>
+                                                {song?.title}
+                                            </p>
+                                        </div>
+                                        <div className="play-button">
+
+                                            {currentSong.id === song.id && isPlaying ? 
+                                            null : <p className="play-button" key={song?.id}><FaPlayCircle className="play-button" onClick={() => playOnClick(song)} /></p>                                   
+                                        }
+                                        </div>
+                                    </div>
+                                </div> : null
+                            ))}
+                        </Carousel>
+                        </div>
                     </div>
                 </div>
             </div>
