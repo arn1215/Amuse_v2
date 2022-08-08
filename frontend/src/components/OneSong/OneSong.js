@@ -58,8 +58,8 @@ const OneSong = () => {
         <div className="comment">
           <CommentContainer songId={song.id}></CommentContainer>
         </div> 
-          <Player ref={audio} className='player' childFunc={childFunc} childFunc2={childFunc2} bool={bool} currentSong={song} />       
       </div>
+          <Player ref={audio} className='player' childFunc={childFunc} childFunc2={childFunc2} bool={bool} currentSong={song} />       
       </>
       ) : null
     }

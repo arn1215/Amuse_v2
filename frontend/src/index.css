@@ -7,7 +7,6 @@
 
 }
 
-label {}
 
 button {
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.13);
@@ -1245,4 +1244,9 @@ li.errors {
     opacity: 1;
 
   }
+}
+
+
+.inner {
+  height: 100%;
 }

@@ -16,7 +16,6 @@ import { fetchSongsLikes } from "./store/like";
 import ProfilePage from "./components/ProfilePage";
 
 
-
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -38,7 +37,8 @@ function App() {
             {/* move this to splash page <Footer />  */}
           </Route>
           <Route exact path="/test">
-            <ProfilePage />       
+            <ProfilePage />  
+            <h2>yo</h2>   
           </Route>
           <Route exact path="/users/:userId" className="yo">
             {/* <SingleSongPage /> */}
