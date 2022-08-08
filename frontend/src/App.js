@@ -13,6 +13,7 @@ import UploadFormPage from "./components/UploadFormPage";
 import Loading from './components/Loading'
 import { fetchSongComments } from "./store/comment";
 import { fetchSongsLikes } from "./store/like";
+import ProfilePage from "./components/ProfilePage";
 
 
 
@@ -36,8 +37,12 @@ function App() {
             <ProfileComponent isLoaded={isLoaded}  />
             {/* move this to splash page <Footer />  */}
           </Route>
+          <Route exact path="/test">
+            <ProfilePage />       
+          </Route>
           <Route exact path="/users/:userId">
-            <SingleSongPage />       
+            
+            <ProfilePage />
           </Route>
           <Route exact path="/songs/:songId">
             <OneSong />

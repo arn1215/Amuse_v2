@@ -49,7 +49,7 @@ const ProfileComponent = () => {
   
         dispatch(clearSong())
         dispatch(fetchSongs())
-        dispatch(fetchLikedSongs(user.id))
+        dispatch(fetchLikedSongs(user?.id))
 
 
     }, [dispatch])
@@ -87,7 +87,6 @@ const ProfileComponent = () => {
                             arrows={true}
                             autoPlay={false}
                             autoPlaySpeed={90000000}
-                            customTransition="all .5"
                             transitionDuration={.1}
                             containerClass="carousel-container"
                             removeArrowOnDeviceType={["tablet", "mobile"]}
@@ -121,7 +120,9 @@ const ProfileComponent = () => {
                             ))}
                         </Carousel>
                         </div>
+                        {user&&
                         <h3 className='recent'>Liked Songs</h3>
+                        }
                         <div>
 
                         <Carousel
@@ -131,7 +132,6 @@ const ProfileComponent = () => {
                             arrows={true}
                             autoPlay={false}
                             autoPlaySpeed={90000000}
-                            customTransition="all .5"
                             transitionDuration={.1}
                             containerClass="carousel-container"
                             removeArrowOnDeviceType={["tablet", "mobile"]}

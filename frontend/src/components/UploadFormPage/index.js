@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { uploadSong } from "../../store/song";
 import AWS from 'aws-sdk'
 import { useHistory } from "react-router-dom";
+import {BarLoader} from "react-spinners"
 
 
 
@@ -17,7 +18,7 @@ const UploadFormPage = () => {
 
 
 
-    const [success, setSuccess] = useState("pending")
+    const [success, setSuccess] = useState("")
     const history = useHistory()
 
     const dispatch = useDispatch();
@@ -206,11 +207,15 @@ const UploadFormPage = () => {
                                     onChange={e => {
                                         s3Upload(e.target.files[0], e.target.name);
                                         setSelectedFile(e.target.files[0].name)
+                                        setSuccess("pending")
                                     }}
                                 />
                                 Select a File
                             </div>
                             <p>{selectedFile}</p>
+                            {selectedFile && success === "pending" ? 
+                                <BarLoader width={450} color="#ff9c40" />: null
+                            }
                         </label> :
                         <div
                             className='sign-up-button done'

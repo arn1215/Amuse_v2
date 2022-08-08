@@ -634,11 +634,10 @@ form .sign-up-button {
   border-radius: 35px;
   z-index: 1000;
   border: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 199, 146, 0.5);
   width: 20px;
   min-width: 20px !important;
-  min-height: 100px !important;
-
+  min-height: 20px !important;
   opacity: 1;
   cursor: pointer;
 }
@@ -1018,7 +1017,7 @@ form .sign-up-button {
 
 .white-background {
   height: 100%;
-  background-color: #ffffff;
+  background-color: #ececec;
   width: 65%;
   display: flex;
 

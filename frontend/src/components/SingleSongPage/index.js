@@ -70,7 +70,6 @@ const SingleSongPage = () => {
                     arrows={true}
                     autoPlay={false}
                     autoPlaySpeed={90000000}
-                    customTransition="all .5"
                     transitionDuration={.1}
                     containerClass="carousel-container"
                     removeArrowOnDeviceType={["tablet", "mobile"]}
