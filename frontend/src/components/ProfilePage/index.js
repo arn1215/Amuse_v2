@@ -36,7 +36,7 @@ const ProfilePage = () => {
             {artist.Songs.map(song => {
               return (
                 <>
-                <ProfileSongCard />
+                <ProfileSongCard song={song} />
                 </>
               )
             })}
