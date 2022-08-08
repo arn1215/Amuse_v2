@@ -40,7 +40,7 @@ function App() {
           <Route exact path="/test">
             <ProfilePage />       
           </Route>
-          <Route exact path="/users/:userId">
+          <Route exact path="/users/:userId" className="yo">
             {/* <SingleSongPage /> */}
             <ProfilePage />
           </Route>

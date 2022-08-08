@@ -1,7 +1,8 @@
 /* TODO Add site wide styles */
 
+
 * {
-  font-family: 'Overpass', sans-serif;
+  font-family: 'inter', sans-serif;
   color: rgb(39, 39, 39);
 
 }
@@ -190,6 +191,11 @@ a.link {
   border-radius: 7px 7px 0px 0px;
 
 
+}
+
+.outer {
+  -webkit-animation: anvil 0.18s cubic-bezier(0.38, 0.1, 0.36, 0.9);
+  
 }
 
 .page-container {
