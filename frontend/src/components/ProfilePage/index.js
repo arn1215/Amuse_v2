@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchArtist } from "../../store/song";
 
 
 const ProfilePage = () => {
- 
+  const [isLoaded, setIsLoaded] = useState(false)
   const params = useParams()
   const dispatch = useDispatch()
   const src = "https://amuse-bucket.s3.amazonaws.com/DriveMeCrazy.png"
@@ -13,11 +13,14 @@ const ProfilePage = () => {
   console.log(artist[params.userId][0].username)
 
   useEffect(() => {
-    dispatch(fetchArtist(28))
+    dispatch(fetchArtist(params.userId)).then(setIsLoaded(true))
+    
   }, [])
   
   return (
-    <div className="outer" style={{ backgroundColor: " #dfdfdf", height: "100%", display: "flex", justifyContent: "center", marginTop: "-3px" }}>
+    <>
+    {isLoaded && 
+      <div className="outer" style={{ backgroundColor: " #dfdfdf", height: "100%", display: "flex", justifyContent: "center", marginTop: "-3px" }}>
       <div className="inner" style={{ backgroundColor: "white", height: "100%", width: "65%", display: "flex", flexDirection: "column" }}>
         <div className="banner" style={{ backgroundColor: "#ff9c40", height: "300px", display: "flex", alignItems: "center" }}>
             <img src={src} style={{ backgroundColor: "white", height: "220px", width: "220px", borderRadius: "50%", marginLeft: "10%" }}/>     
@@ -29,6 +32,8 @@ const ProfilePage = () => {
         </div>
       </div>
     </div>
+  }
+    </>
   )
 }
 
