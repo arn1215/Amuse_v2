@@ -63,7 +63,7 @@ router.get('/:userId',  asyncHandler(async (req, res) => {
         include: Song,
 
     })
-    return res.json(userAndSongs)
+    return res.json(userAndSongs[0])
 }))
 
 

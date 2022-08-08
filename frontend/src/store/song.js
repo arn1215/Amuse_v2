@@ -230,7 +230,7 @@ export const songReducer = (state = initialState, action) => {
             return newState
         case ARTIST_INFO:
             newState = {...state}
-            newState.artistInfo[action?.artist[0]?.id] = action.artist
+            newState.artistInfo = action.artist
             return newState
         default: 
             return state
