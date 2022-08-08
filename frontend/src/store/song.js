@@ -20,6 +20,23 @@ const EDIT_SONG = 'songs/editSong'
 
 const LIKED_SONGS = "songs/likedSongs"
 
+const ARTIST_INFO = "songs/artistSongs"
+
+export const artistSongs = (artist) => ({
+    type: ARTIST_INFO,
+    artist
+})
+
+export const fetchArtist = (id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/users/${id}`)
+
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(artistSongs(data))
+        return data
+    }
+}
+
 export const likedSongs = (likes) => ({
     type: LIKED_SONGS,
     likes
@@ -164,7 +181,7 @@ export const updateSong = (song) => async (dispatch) => {
     return songToUpdate
 }
 
-const initialState = { userSongs: {}, likedSongs: {} }
+const initialState = { userSongs: {}, likedSongs: {}, artistInfo: {} }
 
 export const songReducer = (state = initialState, action) => {
     let newState;
@@ -211,7 +228,11 @@ export const songReducer = (state = initialState, action) => {
             newState = { ...state }
             newState.song = {}
             return newState
-        default:
+        case ARTIST_INFO:
+            newState = {...state}
+            newState.artistInfo[action?.artist[0]?.id] = action.artist
+            return newState
+        default: 
             return state
     }
 

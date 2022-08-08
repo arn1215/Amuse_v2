@@ -58,13 +58,12 @@ router.post(
 
 router.get('/:userId',  asyncHandler(async (req, res) => {
     const userId = parseInt(req.params.userId, 10)
-    const songs = await Song.findAll({
-        where: {
-            userId
-        },
+    const userAndSongs = await User.findAll({
+        where: {id: userId},
+        include: Song,
 
     })
-    return res.json(songs)
+    return res.json(userAndSongs)
 }))
 
 
