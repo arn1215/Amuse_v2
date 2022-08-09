@@ -1252,10 +1252,10 @@ li.errors {
 }
 
 
-.grey {
+.grey, .grey-active {
   transition:  all .4s;
 }
-.grey:hover {
+.grey:hover,.grey-active:hover {
   box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.23);
 }
 
@@ -1265,6 +1265,7 @@ li.errors {
 	animation: gradient 7s ease-out infinite;
 	height: 100%;
 }
+
 
 
 @keyframes gradient {
