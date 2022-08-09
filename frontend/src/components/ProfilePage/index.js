@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { fetchArtist } from "../../store/song";
+import { clearSongs, fetchArtist, fetchSongs } from "../../store/song";
 import Player from "../PlayerComponent";
 
 import 'react-h5-audio-player/lib/styles.css'
@@ -18,6 +18,8 @@ const ProfilePage = () => {
 
 
   useEffect(() => {
+    dispatch(clearSongs())
+    dispatch(fetchSongs())
     dispatch(fetchArtist(params.userId)).then(setIsLoaded(true))
 
   }, [])
@@ -37,17 +39,15 @@ const ProfilePage = () => {
               </div>
             </div>
             {artist.Songs.map(song => {
-              return (
-                <>
-                  <div className="grey" style={{cursor: "pointer", backgroundColor: "#dfdfdf", height: "20%", width: "50%", marginTop: "4%", marginLeft: "4%", display: "flex", alignItems: "center", borderRadius: "4px" }} onClick={() => setCurrentSong(song)}>
+              return (          
+                  <div key={song.id} className="grey" style={{cursor: "pointer", backgroundColor: "#dfdfdf", height: "20%", width: "50%", marginTop: "4%", marginLeft: "4%", display: "flex", alignItems: "center", borderRadius: "4px" }} onClick={() => setCurrentSong(song)}>
                     <Link to={`/songs/${song.id}`} style={{ height: "80%", marginTop: "4%" }}>
                       <img src={song?.imageUrl} style={{ height: "80%", marginLeft: "15px", borderRadius: "4px" }} />
                     </Link>
                     <div className="songInfo" style={{ height: "80%", width: "60%", marginLeft: "15px" }}>
                       <h5 style={{ marginTop: "3%" }}>{song.title}</h5>
                     </div>
-                  </div>
-                </>
+                  </div>           
               )
             })}
           </div>

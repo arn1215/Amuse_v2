@@ -150,7 +150,7 @@ const UploadFormPage = () => {
     // })
 
     const redirect = () => {
-        history.push(`users/2`)
+        history.push(`users/${userId}`)
     }
 
     const handleFileInput = (e) => {

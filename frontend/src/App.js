@@ -36,10 +36,6 @@ function App() {
             <ProfileComponent isLoaded={isLoaded}  />
             {/* move this to splash page <Footer />  */}
           </Route>
-          <Route exact path="/test">
-            <ProfilePage />  
-            <h2>yo</h2>   
-          </Route>
           <Route exact path="/users/:userId" className="yo">
             {/* <SingleSongPage /> */}
             <ProfilePage />
