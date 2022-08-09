@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux'
 import '../SongListComponent/songListStyles.css'
 import { fetchUserSongs, getUserSongs, removeSong } from '../../store/song'
 import EditFormModal from '../EditFormModal'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import CommentContainer from '../CommentContainer'
 import UploadFormPage from '../UploadFormPage'
 import Carousel from "react-multi-carousel";
@@ -18,13 +18,14 @@ import Footer from '../FooterComponent'
 
 const SongList = ({ song, userId, sessionUserId }) => {
     const dispatch = useDispatch()
-
+    const [active, setActive] = useState("")
 
 
 
     const onClick = async (e) => {
         await dispatch(removeSong(song.id))
         dispatch(getUserSongs(userId))
+        setActive("grey-active")
         //e.target.value
         // await dispatch(fetchUserSongs(userId))
         // console.log(+currentSong)

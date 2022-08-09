@@ -1258,3 +1258,23 @@ li.errors {
 .grey:hover {
   box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.23);
 }
+
+.grey-active {
+  background: linear-gradient(-45deg, #b3b3b3, #9e9e9e, #aaa9a9, #dadada);
+	background-size: 400% 400%;
+	animation: gradient 7s ease-out infinite;
+	height: 100%;
+}
+
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

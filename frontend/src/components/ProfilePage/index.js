@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { clearSongs, fetchArtist, fetchSongs } from "../../store/song";
 import Player from "../PlayerComponent";
+import { ScaleLoader } from "react-spinners";
 
 import 'react-h5-audio-player/lib/styles.css'
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
@@ -10,12 +11,16 @@ import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
 const ProfilePage = () => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [currentSong, setCurrentSong] = useState()
+  const [active, setActive] = useState("")
   const params = useParams()
   const dispatch = useDispatch()
   const src = "https://amuse-bucket.s3.amazonaws.com/DriveMeCrazy.png"
   const artist = useSelector(state => state?.songs?.artistInfo)
 
-
+const onClick = (song) => {
+  setCurrentSong(song)
+  setActive("grey-active")
+}
 
   useEffect(() => {
     dispatch(clearSongs())
@@ -40,13 +45,14 @@ const ProfilePage = () => {
             </div>
             {artist.Songs.map(song => {
               return (          
-                  <div key={song.id} className="grey" style={{cursor: "pointer", backgroundColor: "#dfdfdf", height: "20%", width: "50%", marginTop: "4%", marginLeft: "4%", display: "flex", alignItems: "center", borderRadius: "4px" }} onClick={() => setCurrentSong(song)}>
+                  <div key={song.id} className={song?.id === currentSong?.id ? `${active}` : "grey"} style={{cursor: "pointer", backgroundColor: "#dfdfdf", height: "20%", width: "50%", marginTop: "4%", marginLeft: "4%", display: "flex", alignItems: "center", borderRadius: "4px" }} onClick={() => onClick(song)}>
                     <Link to={`/songs/${song.id}`} style={{ height: "80%", marginTop: "4%" }}>
                       <img src={song?.imageUrl} style={{ height: "80%", marginLeft: "15px", borderRadius: "4px" }} />
                     </Link>
                     <div className="songInfo" style={{ height: "80%", width: "60%", marginLeft: "15px" }}>
                       <h5 style={{ marginTop: "3%" }}>{song.title}</h5>
                     </div>
+                    {song?.id === currentSong?.id ? <ScaleLoader /> : null}
                   </div>           
               )
             })}
