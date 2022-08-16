@@ -12,6 +12,8 @@ const ProfilePage = () => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [currentSong, setCurrentSong] = useState()
   const [active, setActive] = useState("")
+  let title = currentSong?.title
+  let image = currentSong?.imageUrl
   const params = useParams()
   const dispatch = useDispatch()
   const src = "https://amuse-bucket.s3.amazonaws.com/DriveMeCrazy.png"
@@ -20,6 +22,11 @@ const ProfilePage = () => {
 const onClick = (song) => {
   setCurrentSong(song)
   setActive("grey-active")
+}
+
+const onEnd = () => {
+  setCurrentSong("")
+  currentSong.SongURL = null;
 }
 
   useEffect(() => {
@@ -59,7 +66,25 @@ const onClick = (song) => {
           </div>
         </div>
       }
-      <Player currentSong={currentSong} />
+              <>
+            
+            <AudioPlayer
+                autoPlay={false}
+                className='h5'
+                src={ currentSong && currentSong.songURL ? currentSong.songURL : null }
+                layout="stacked-reverse"
+                loop={false}
+    
+                header={
+                    <div className="now-playing" style={{ marginLeft: "100px", marginTop: '10px' }}>
+                        <span><img className="playerImg" src={image} style={{ width: '30px' }} /></span>
+                        <span> {title}</span>
+                        {/* <p>{`${isPlaying}`}</p> */}                  
+                    </div>
+                }
+            />
+            
+        </>
 
     </>
   )

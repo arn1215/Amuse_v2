@@ -14,7 +14,7 @@ const Player = ({ currentSong, bool, childFunc, childFunc2 }) => {
     const params = useParams()
     let title = currentSong?.title
     let image = currentSong?.imageUrl
-
+    const [current, setCurrent] = useState("")
     
 
 
@@ -25,8 +25,9 @@ const Player = ({ currentSong, bool, childFunc, childFunc2 }) => {
             <AudioPlayer
                 autoPlay={ params.songId ? true : false}
                 className='h5'
-                src={ currentSong ? currentSong.songURL : null }
+                src={ currentSong ? currentSong.songURL : current }
                 layout="stacked-reverse"
+                onEnded={setCurrent}
                 header={
                     <div className="now-playing" style={{ marginLeft: "100px", marginTop: '10px' }}>
                         <span><img className="playerImg" src={image} style={{ width: '30px' }} /></span>
