@@ -29,6 +29,7 @@
     "mysql2": "^2.3.3",
     "npm": "^8.12.1",
     "react-h5-audio-player": "^3.8.3",
+    "react-icons": "^4.4.0",
     "react-spinners": "^0.13.4",
     "sequelize": "^6.20.1",
     "sequelize-cli": "^6.4.1"
