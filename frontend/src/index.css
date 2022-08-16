@@ -1311,3 +1311,28 @@ li.errors {
   min-height: 350px;
   -webkit-animation: anvil 0.18s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 }
+
+.popup-content {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  width: 50px !important;
+  padding: 5px;
+  color: white;
+  -webkit-animation: anvil 0.18s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+}
+.popup-arrow {
+  color: rgb(255, 0, 0) ;
+  visibility: hidden;
+  
+}
+[role='tooltip'].popup-content {
+  width: 200px;
+  box-shadow: rgba(161, 161, 161, 0.16) 0px 0px 3px ;
+}
+
+.popup-overlay {
+  background: rgb(255, 255, 255);
+}
+[data-popup='tooltip'].popup-overlay {
+  background: transparent;
+}

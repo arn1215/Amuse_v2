@@ -4,9 +4,12 @@
   "private": true,
   "dependencies": {
     "@breakfast-dlc/visualize": "^0.2.4",
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
+    "@mui/material": "^5.10.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -25,8 +28,10 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
     "react-scripts": "5.0.0",
+    "reactjs-popup": "^2.0.5",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
+    "tailwindcss": "^3.1.8",
     "util": "^0.12.4"
   },
   "scripts": {
