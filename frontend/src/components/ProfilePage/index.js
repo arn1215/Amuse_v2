@@ -46,7 +46,7 @@ const ProfilePage = () => {
     dispatch(fetchSongs())
     dispatch(fetchArtist(params.userId)).then(setIsLoaded(true))
 
-  }, [])
+  }, [params])
 
   return (
     <>
