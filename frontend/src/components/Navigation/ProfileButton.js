@@ -33,7 +33,7 @@ function ProfileButton({ user }) {
 
   return (
     <div className='dropdown-container'>
-        <button  style={{marginLeft: "-70px"}} className="sign-in-button logout" onClick={logout}>Log Out</button>
+        <button  style={{marginLeft: "-70px"}} className="sign-in-button logout two" onClick={logout}>Log Out</button>
     
     </div>
   );

@@ -129,7 +129,7 @@ const ProfileComponent = () => {
                                         ))}
                                     </Carousel>
                                 </div>
-                                {user &&
+                                {user && likeList[0] &&
                                     <h3 className='recent'>Liked Songs</h3>
                                 }
                                 <div>

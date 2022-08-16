@@ -1112,6 +1112,31 @@ div.song-list {
   transition: all 0.5s;
 }
 
+.logout.two {
+  width: 65px;
+  height: 26px;
+  display: inline-block;
+  position: relative;
+  height: 26px;
+  margin: 0;
+  border: 1px solid #e5e5e541;
+  border-radius: 2.8px;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  font-size: 13.8px;
+  line-height: 20px;
+  white-space: nowrap;
+  font-weight: 100;
+  text-align: center;
+  vertical-align: initial;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  box-sizing: border-box;
+  background-color: initial;
+  transition: all 0.5s;
+}
+
 .sign-in-button:hover {
   border: 1px solid #e5e5e5;
 }
