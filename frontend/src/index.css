@@ -475,8 +475,14 @@ input[type="file"] {
   display: none;
 }
 
+.songInfo .popup-content {
+  padding: 0px !important;
+}
 
 
+.loginForm {
+  -webkit-animation: anvil 0.18s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+}
 
 .loginForm.upload {
   height: 35%;

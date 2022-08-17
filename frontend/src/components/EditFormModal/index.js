@@ -9,11 +9,11 @@ function EditFormModal({id, song}) {
   
   return (
     <>
-      <FaEdit style={{cursor: "pointer"}} onClick={() => setShowModal(true)} />
+      <FaEdit style={{cursor: "pointer"}} onClick={() => setShowModal(!showModal)} />
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal onClose={() => setShowModal(!showModal)}>
           <div className='close-modal'>
-          <p style={{color:'white', cursor: 'pointer'}} onClick={() => setShowModal(false)}>Close</p>
+          <p style={{color:'white', cursor: 'pointer'}} onClick={() => setShowModal(!showModal)}>Close</p>
           <EditForm id={id} song={song} />
           </div>
         </Modal>

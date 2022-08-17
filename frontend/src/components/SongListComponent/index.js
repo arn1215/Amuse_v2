@@ -58,7 +58,7 @@ const ProfileComponent = () => {
         dispatch(fetchLikedSongs(user?.id))
         setIsLoaded(true)
 
-    }, [dispatch])
+    }, [dispatch, user])
 
 
     const playOnClick = (song) => {

@@ -11,6 +11,7 @@ import React from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import EditForm from "../EditFormModal/EditForm";
+import EditFormModal from "../EditFormModal";
 
 
 const ProfilePage = () => {
@@ -87,7 +88,13 @@ const ProfilePage = () => {
                   <div className="songInfo" style={{ height: "80%", width: "60%", marginLeft: "15px" }}>
                     {isEditing.editing && song.id === isEditing?.id ?
                       <>
-                        <EditForm song={song} id={song.id}/>
+                        <Popup 
+                        open={isEditing}
+                        modal
+                        onClose={() => setIsEditing(!isEditing)}
+                        >
+                        <EditForm song={song} id={song.id} active={isEditing} />
+                        </Popup>
                       </>
                       : <h5 style={{ marginTop: "3%" }}>{song.title}</h5>}
                     {song?.id === currentSong?.id ? <ScaleLoader /> : null}
