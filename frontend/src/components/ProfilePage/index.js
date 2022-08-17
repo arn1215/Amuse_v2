@@ -4,7 +4,7 @@ import { Link, Redirect, useHistory, useParams } from "react-router-dom";
 import { clearSongs, fetchArtist, fetchSongs, removeSong } from "../../store/song";
 import Player from "../PlayerComponent";
 import { ScaleLoader } from "react-spinners";
-import { FaBars, FaEdit, FaTrash } from "react-icons/fa";
+import { FaBackspace, FaBackward, FaBars, FaClock, FaEdit, FaRegSave, FaSave, FaTrash, FaXbox } from "react-icons/fa";
 import 'react-h5-audio-player/lib/styles.css'
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
 import React from 'react';
@@ -14,7 +14,9 @@ import 'reactjs-popup/dist/index.css';
 
 const ProfilePage = () => {
   const [isLoaded, setIsLoaded] = useState(false)
+  const [editedTitle, setEditedTitle] = useState("")
   const [currentSong, setCurrentSong] = useState()
+  const [isEditing, setIsEditing] = useState({ editing: false, id: null })
   const [active, setActive] = useState("")
   let title = currentSong?.title
   let image = currentSong?.imageUrl
@@ -33,7 +35,7 @@ const ProfilePage = () => {
   const onDelete = (id) => {
     dispatch(removeSong(id))
     window.location.reload(false)
-    
+
   }
 
   const onEnd = () => {
@@ -45,6 +47,7 @@ const ProfilePage = () => {
     dispatch(clearSongs())
     dispatch(fetchSongs())
     dispatch(fetchArtist(params.userId)).then(setIsLoaded(true))
+
 
   }, [params])
 
@@ -69,24 +72,38 @@ const ProfilePage = () => {
                     <img src={song?.imageUrl} style={{ height: "80%", marginLeft: "15px", borderRadius: "4px" }} />
                   </Link>
                   <div className="songInfo" style={{ height: "80%", width: "60%", marginLeft: "15px" }}>
-                    <h5 style={{ marginTop: "3%" }}>{song.title}</h5>
-                  {song?.id === currentSong?.id ? <ScaleLoader /> : null}
+                    {isEditing.editing && song.id === isEditing?.id ?
+                      <>
+                        <form>
+                          <input
+                            placeholder={song?.title}
+                            style={{ width: "80%" }}
+                            value={editedTitle}
+                            onChange={(e) => setEditedTitle(e.target.value)}
+                          />
+                          <FaRegSave />
+                          <FaBackspace />
+                        </form>
+                        <button onClick={(E) => console.log(editedTitle)}>hey</button>
+                      </>
+                      : <h5 style={{ marginTop: "3%" }}>{song.title}</h5>}
+                    {song?.id === currentSong?.id ? <ScaleLoader /> : null}
                   </div>
-                    <Popup trigger={<div className="bars" style={{ marginBottom: "100px", marginLeft: "30px" }}><FaBars  /></div>} position="right center">
-                      {userId === song.userId ? 
-                      <div style={{display: "flex", justifyContent: "space-between"}}>
+                  <Popup trigger={<div className="bars" style={{ marginBottom: "100px", marginLeft: "30px" }}><FaBars /></div>} position="right center">
+                    {userId === song.userId ?
+                      <div style={{ display: "flex", justifyContent: "space-between" }}>
 
-                      <div onClick={() => onDelete(song.id)} style={{cursor: "pointer"}}>
-                      <FaTrash /> 
-                      </div>
-                      <div style={{cursor: "pointer"}}>
-                      <FaEdit /> 
-                      </div>
+                        <div onClick={() => onDelete(song.id)} style={{ cursor: "pointer" }}>
+                          <FaTrash />
+                        </div>
+                        <div style={{ cursor: "pointer" }} onClick={() => setIsEditing({ editing: true, id: song.id })}>
+                          <FaEdit />
+                        </div>
                       </div>
                       : null
-                    
-                      }
-                    </Popup>
+
+                    }
+                  </Popup>
                 </div>
               )
             })}
