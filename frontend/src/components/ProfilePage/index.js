@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect, useHistory, useParams } from "react-router-dom";
-import { clearSongs, fetchArtist, fetchSongs, removeSong } from "../../store/song";
+import { clearSongs, editSong, fetchArtist, fetchSongs, removeSong } from "../../store/song";
 import Player from "../PlayerComponent";
 import { ScaleLoader } from "react-spinners";
 import { FaBackspace, FaBackward, FaBars, FaClock, FaEdit, FaRegSave, FaSave, FaTrash, FaXbox } from "react-icons/fa";
@@ -10,16 +10,17 @@ import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
 import React from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import EditForm from "../EditFormModal/EditForm";
 
 
 const ProfilePage = () => {
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [editedTitle, setEditedTitle] = useState("")
   const [currentSong, setCurrentSong] = useState()
-  const [isEditing, setIsEditing] = useState({ editing: false, id: null })
-  const [active, setActive] = useState("")
   let title = currentSong?.title
   let image = currentSong?.imageUrl
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [editedTitle, setEditedTitle] = useState(title ? title : "")
+  const [isEditing, setIsEditing] = useState({ editing: false, id: null })
+  const [active, setActive] = useState("")
   const params = useParams()
   const dispatch = useDispatch()
   const src = "https://amuse-bucket.s3.amazonaws.com/9c2fbf6efe95fdc919467a4db69d72cb"
@@ -41,6 +42,18 @@ const ProfilePage = () => {
   const onEnd = () => {
     setCurrentSong("")
     currentSong.SongURL = null;
+  }
+
+  const submitEdit = () => {
+    const song = {
+      title: editedTitle,
+      userId,
+      songId: isEditing?.id
+    }
+    
+    dispatch(editSong(song))
+
+
   }
 
   useEffect(() => {
@@ -74,17 +87,7 @@ const ProfilePage = () => {
                   <div className="songInfo" style={{ height: "80%", width: "60%", marginLeft: "15px" }}>
                     {isEditing.editing && song.id === isEditing?.id ?
                       <>
-                        <form>
-                          <input
-                            placeholder={song?.title}
-                            style={{ width: "80%" }}
-                            value={editedTitle}
-                            onChange={(e) => setEditedTitle(e.target.value)}
-                          />
-                          <FaRegSave />
-                          <FaBackspace />
-                        </form>
-                        <button onClick={(E) => console.log(editedTitle)}>hey</button>
+                        <EditForm song={song} id={song.id}/>
                       </>
                       : <h5 style={{ marginTop: "3%" }}>{song.title}</h5>}
                     {song?.id === currentSong?.id ? <ScaleLoader /> : null}

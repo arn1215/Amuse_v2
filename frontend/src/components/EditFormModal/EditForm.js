@@ -53,7 +53,7 @@ const EditForm = ({id, song}) => {
 
 
     return (
-        <>
+        <div style={{position: "relative"}}>
             
             <form
                 onSubmit={onSubmit}
@@ -76,7 +76,7 @@ const EditForm = ({id, song}) => {
                     className="sign-up-button">Edit Song</button>
             </form>
            
-        </>
+        </div>
     )
 }
 
