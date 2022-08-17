@@ -20,7 +20,7 @@ const ProfilePage = () => {
   let image = currentSong?.imageUrl
   const params = useParams()
   const dispatch = useDispatch()
-  const src = "https://amuse-bucket.s3.amazonaws.com/DriveMeCrazy.png"
+  const src = "https://amuse-bucket.s3.amazonaws.com/9c2fbf6efe95fdc919467a4db69d72cb"
   const artist = useSelector(state => state?.songs?.artistInfo)
   let userId = useSelector(state => state.session?.user?.id)
   const history = useHistory()

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import * as sessionActions from '../../store/session';
+import { clearLikedSongs } from "../../store/song";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault()
     dispatch(sessionActions.logout());
+    dispatch(clearLikedSongs())
     history.push('/')
   };
 

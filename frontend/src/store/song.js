@@ -20,6 +20,8 @@ const EDIT_SONG = 'songs/editSong'
 
 const LIKED_SONGS = "songs/likedSongs"
 
+const CLEAR_LIKES = "songs/clearLikes"
+
 const ARTIST_INFO = "songs/artistSongs"
 
 export const artistSongs = (artist) => ({
@@ -40,6 +42,10 @@ export const fetchArtist = (id) => async (dispatch) => {
 export const likedSongs = (likes) => ({
     type: LIKED_SONGS,
     likes
+})
+
+export const clearLikedSongs = () => ({
+    type: CLEAR_LIKES
 })
 
 export const fetchLikedSongs = (id) => async (dispatch) => {
@@ -207,6 +213,10 @@ export const songReducer = (state = initialState, action) => {
                     newState.likedSongs[song.id] = song.Song
                 }
             })
+            return newState
+        case CLEAR_LIKES:
+            newState = {...state};
+            newState.likedSongs = {}
             return newState
         case GET_SONG:
             newState = { ...state }
