@@ -51,7 +51,7 @@ const ProfilePage = () => {
       userId,
       songId: isEditing?.id
     }
-
+    
     dispatch(editSong(song))
 
 
@@ -68,64 +68,61 @@ const ProfilePage = () => {
   return (
     <>
       {artist.username &&
-        <div style={{display: "flex", height: "91%", flexDirection: "column", justifyContent: "center", width: "100%" }}>
-                        <div className="banner" style={{position: "relative", zIndex: "2", alignSelf:"center", backgroundColor: "#ff9c40", height: "300px", display: "flex", alignItems: "center" , width: "65%"}}>
-                <a href={src} style={{ marginLeft: "10%" }}>
-                  <img src={src} style={{ backgroundColor: "white", height: "220px", width: "220px", borderRadius: "50%", marginLeft: "10%" }} />
-                </a>
-                <div className="artist-detail" style={{ height: "220px", width: "350px", marginLeft: "30px" }}>
-                  <h3 style={{ color: "white" }}>{artist.username}</h3>
-                  <h6>Artist Location</h6>
-                </div>
+        <div className="outer" style={{ backgroundColor: " #dfdfdf", height: "91%", display: "flex", justifyContent: "center", marginTop: "-3px" }} >
+          <div className="inner" style={{ backgroundColor: "white", height: "100%", width: "65%", display: "flex", flexDirection: "column", overflow: "scroll" }}>
+            <div className="banner" style={{ backgroundColor: "#ff9c40", height: "300px", display: "flex", alignItems: "center" }}>
+              <a href={src} style={{ marginLeft: "10%" }}>
+                <img src={src} style={{ backgroundColor: "white", height: "220px", width: "220px", borderRadius: "50%", marginLeft: "10%" }} />
+              </a>
+              <div className="artist-detail" style={{ height: "220px", width: "350px", marginLeft: "30px" }}>
+                <h3 style={{ color: "white" }}>{artist.username}</h3>
+                <h6>Artist Location</h6>
               </div>
-          <div className="outer" style={{ backgroundColor: " #dfdfdf", height: "91%", display: "flex", justifyContent: "center", marginTop: "-3px" }} >
-            <div className="inner" style={{ backgroundColor: "white", height: "100%", width: "65%", display: "flex", flexDirection: "row", overflow: "scroll" }}>
-
-              {artist.Songs.map(song => {
-                return (
-                  <div key={song.id} className={song?.id === currentSong?.id ? `${active}` : "grey"} style={{ cursor: "pointer", backgroundColor: "#dfdfdf", height: "20%", width: "50%", marginTop: "4%", marginLeft: "4%", display: "flex", alignItems: "center", borderRadius: "4px" }} onClick={() => onClick(song)}>
-                    <Link to={`/songs/${song.id}`} style={{ height: "80%", marginTop: "4%" }}>
-                      <img src={song?.imageUrl} style={{ height: "80%", marginLeft: "15px", borderRadius: "4px" }} />
-                    </Link>
-                    <div className="songInfo" style={{ height: "80%", width: "60%", marginLeft: "15px" }}>
-                      {isEditing.editing && song.id === isEditing?.id ?
-                        <>
-                          <Popup
-                            open={isEditing}
-                            modal
-                            onClose={() => setIsEditing(!isEditing)}
-                          >
-                            <EditForm song={song} id={song.id} active={isEditing} />
-                          </Popup>
-                        </>
-                        : <h5 style={{ marginTop: "3%" }}>{song.title}</h5>}
-                      {song?.id === currentSong?.id ? <ScaleLoader /> : null}
-                    </div>
-                    <Popup trigger={<div className="bars" style={{ marginBottom: "100px", marginLeft: "30px" }}><FaBars /></div>} position="right center">
-                      {userId === song.userId ?
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
-
-                          <div onClick={() => onDelete(song.id)} style={{ cursor: "pointer" }}>
-                            <FaTrash />
-                          </div>
-                          <div style={{ cursor: "pointer" }} onClick={() => setIsEditing({ editing: true, id: song.id })}>
-                            <FaEdit />
-                          </div>
-                        </div>
-                        : null
-
-                      }
-                    </Popup>
-                  </div>
-                )
-              })}
-              <div style={{ border: "1px solid red" }}>yo</div>
             </div>
+            {artist.Songs.map(song => {
+              return (
+                <div key={song.id} className={song?.id === currentSong?.id ? `${active}` : "grey"} style={{ cursor: "pointer", backgroundColor: "#dfdfdf", height: "20%", width: "50%", marginTop: "4%", marginLeft: "4%", display: "flex", alignItems: "center", borderRadius: "4px" }} onClick={() => onClick(song)}>
+                  <Link to={`/songs/${song.id}`} style={{ height: "80%", marginTop: "4%" }}>
+                    <img src={song?.imageUrl} style={{ height: "80%", marginLeft: "15px", borderRadius: "4px" }} />
+                  </Link>
+                  <div className="songInfo" style={{ height: "80%", width: "60%", marginLeft: "15px" }}>
+                    {isEditing.editing && song.id === isEditing?.id ?
+                      <>
+                        <Popup 
+                        open={isEditing}
+                        modal
+                        onClose={() => setIsEditing(!isEditing)}
+                        >
+                        <EditForm song={song} id={song.id} active={isEditing} />
+                        </Popup>
+                      </>
+                      : <h5 style={{ marginTop: "3%" }}>{song.title}</h5>}
+                    {song?.id === currentSong?.id ? <ScaleLoader /> : null}
+                  </div>
+                  <Popup trigger={<div className="bars" style={{ marginBottom: "100px", marginLeft: "30px" }}><FaBars /></div>} position="right center">
+                    {userId === song.userId ?
+                      <div style={{ display: "flex", justifyContent: "space-between" }}>
+
+                        <div onClick={() => onDelete(song.id)} style={{ cursor: "pointer" }}>
+                          <FaTrash />
+                        </div>
+                        <div style={{ cursor: "pointer" }} onClick={() => setIsEditing({ editing: true, id: song.id })}>
+                          <FaEdit />
+                        </div>
+                      </div>
+                      : null
+
+                    }
+                  </Popup>
+                </div>
+              )
+            })}
+            
           </div>
 
         </div>
       }
-
+   
       <>
 
         <AudioPlayer
