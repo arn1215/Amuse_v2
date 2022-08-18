@@ -5,15 +5,16 @@ import { useDispatch } from "react-redux";
 import './LoginForm.css'
 
 function LoginForm() {
-  const dispatch = useDispatch();
-  const [credential, setCredential] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+    const dispatch = useDispatch();
+    const [credential, setCredential] = useState("");
+    const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState([]);
 
 
     const onSubmit = (e) => {
         e.preventDefault()
         setErrors([])
+
         return dispatch(sessionActions.login({ credential, password }))
             .catch(async (res) => {
                 const data = await res.json()
@@ -24,23 +25,25 @@ function LoginForm() {
 
     //Log in a demo user
     const demoOnClick = (e) => {
-        return dispatch(sessionActions.login({ 
+
+        return dispatch(sessionActions.login({
             credential: "StrawberryFam",
-            password: "password" 
+            password: "password"
         }))
-        .catch(async (res) => {
-            const data = await res.json()
-            if (data && data.errors) setErrors(data.errors)
-        })
+            .catch(async (res) => {
+                const data = await res.json()
+                if (data && data.errors) setErrors(data.errors)
+            })
+
     }
 
     return (
         <>
-            
+
             <form
                 onSubmit={onSubmit}
                 className="loginForm"
-                >
+            >
                 <ul className="loginForm">
                     {errors.map((error) => <li key={error} className="errors">{error}</li>)}
                 </ul>
@@ -62,13 +65,13 @@ function LoginForm() {
                     className="loginForm" />
                 <button
                     type='submit'
-                    style={{height: '40px'}}
+                    style={{ height: '40px' }}
                     className="sign-up-button form">Continue</button>
-            <button
-                type='submit'
-                onClick={demoOnClick}
-                className="sign-up-button demo">Demo User
-            </button>
+                <button
+                    type="button"
+                    onClick={demoOnClick}
+                    className="sign-up-button demo">Demo User
+                </button>
             </form>
         </>
     )
