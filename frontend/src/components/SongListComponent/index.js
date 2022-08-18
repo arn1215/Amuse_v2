@@ -55,7 +55,10 @@ const ProfileComponent = () => {
 
         dispatch(clearSong())
         dispatch(fetchSongs())
-        dispatch(fetchLikedSongs(user?.id))
+        if {
+
+            dispatch(fetchLikedSongs(user?.id))
+        }
         setIsLoaded(true)
 
     }, [dispatch, user])
