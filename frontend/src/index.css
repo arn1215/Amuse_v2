@@ -314,6 +314,9 @@ audio {
 li {
   /* margin-top: 5px; */
 }
+.banner {
+  margin-top:17px;
+}
 
 
 .banner-container {
@@ -323,6 +326,7 @@ li {
   color: white;
   display: flex;
   flex-direction: column;
+
 
 }
 
@@ -406,6 +410,7 @@ div.song-container {
 
 .navigation {
   background-color: #ffffff !important;
+ 
 }
 
 .navlink.active {
@@ -1346,3 +1351,19 @@ li.errors {
 [data-popup='tooltip'].popup-overlay {
   background: transparent;
 }
+
+
+@media screen and (max-height: 750px) {
+  .banner {
+    margin-top: 200px;
+  }
+
+} 
+/* 
+@media screen and (max-height: 1500px) {
+  .banner {
+    margin-top:17px;
+  }
+}
+
+} */

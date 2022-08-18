@@ -36,7 +36,7 @@ function Navigation({ isLoaded }) {
   return (
 
     <>
-      <div className='navigation' >
+      <div className='navigation' style={{position: "relative", zIndex: "10"}} >
         <div className='navlink-container'>
           {isLoaded && sessionLinks}
         </div>
