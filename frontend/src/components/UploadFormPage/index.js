@@ -26,6 +26,7 @@ const UploadFormPage = () => {
     const sessionUser = useSelector((state) => state.session.user);
     const userId = sessionUser.id
 
+    
 
 
     const postToS3 = async (url, body) => {
@@ -193,6 +194,7 @@ const UploadFormPage = () => {
                 >
                     {errors.length > 0 &&
                         errors.map((error) => <div className="error upload" key={error}>{error}</div>)}
+                    <h3 className="webkit">{title ? "Upload a file" :"Enter a title" }</h3>
                     <input
                         type="text"
                         placeholder="title"
@@ -201,7 +203,7 @@ const UploadFormPage = () => {
                     />
                     {success === "pending" ?
                         <label>
-                            <div className="sign-up-button upload">
+                            {title ? <div className="sign-up-button upload">
                                 <input type="file"
                                     name="song"
                                     onChange={e => {
@@ -211,7 +213,7 @@ const UploadFormPage = () => {
                                     }}
                                 />
                                 Select a File
-                            </div>
+                            </div> : null}
                             <p>{selectedFile}</p>
                             {selectedFile && success === "pending" ? 
                                 <BarLoader width={450} color="#ff9c40" />: null
