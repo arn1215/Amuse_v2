@@ -4,14 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { uploadSong } from "../../store/song";
 import AWS from 'aws-sdk'
 import { useHistory } from "react-router-dom";
-import {BarLoader} from "react-spinners"
+import { BarLoader } from "react-spinners"
 
 
 
 
 const UploadFormPage = () => {
+    const defaultImg = "https://amuse-bucket.s3.amazonaws.com/ab1b6e74956225d8ac804e3b77b5a437"
     const [title, setTitle] = useState("");
-    const [imageUrl, setImageUrl] = useState("https://images.unsplash.com/photo-1534817043788-41286c872b7b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
+    const [imageUrl, setImageUrl] = useState("");
     const [bucketSong, setBucketSong] = useState("")
     const [selectedFile, setSelectedFile] = useState(null);
     const [errors, setErrors] = useState([]);
@@ -26,7 +27,7 @@ const UploadFormPage = () => {
     const sessionUser = useSelector((state) => state.session.user);
     const userId = sessionUser.id
 
-    
+
 
 
     const postToS3 = async (url, body) => {
@@ -186,6 +187,11 @@ const UploadFormPage = () => {
                             />
                             Upload
                         </div>
+                        <button className="sign-up-button image"
+                            onClick={() => setImageUrl(defaultImg)}
+                        >
+                            Skip
+                        </button>
                     </label>
                 </div>
                 <form
@@ -194,13 +200,14 @@ const UploadFormPage = () => {
                 >
                     {errors.length > 0 &&
                         errors.map((error) => <div className="error upload" key={error}>{error}</div>)}
-                    <h3 className="webkit">{title ? "Upload a file" :"Enter a title" }</h3>
-                    <input
+
+                    {imageUrl === "" ? <h3 className="webkit">Upload an image or skip</h3> : title && imageUrl ? <h3 className="webkit">Upload a file</h3> : <h3 className="webkit">Enter a title</h3>}
+                    {imageUrl ? <input
                         type="text"
                         placeholder="title"
                         value={title}
                         onChange={titleEvent}
-                    />
+                    /> : null}
                     {success === "pending" ?
                         <label>
                             {title ? <div className="sign-up-button upload">
@@ -215,8 +222,8 @@ const UploadFormPage = () => {
                                 Select a File
                             </div> : null}
                             <p>{selectedFile}</p>
-                            {selectedFile && success === "pending" ? 
-                                <BarLoader width={450} color="#ff9c40" />: null
+                            {selectedFile && success === "pending" ?
+                                <BarLoader width={450} color="#ff9c40" /> : null
                             }
                         </label> :
                         <div
