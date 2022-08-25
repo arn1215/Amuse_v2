@@ -1,0 +1,51 @@
+
+
+.feed {
+    text-shadow: 2px 5px rgba(0, 0, 0, 0.473);
+}
+
+.card {
+    /* display: flex; */
+   
+    /* align-items: center;  */
+    /* justify-content: center; */
+}
+
+audio {
+    width: 30%;
+    
+}
+
+
+
+button.loginForm.crud {
+    margin-right: 10px;
+    margin-left: 30px;
+}
+
+button.loginForm.crud.delete:hover {
+   background-color: crimson;
+}
+
+button.loginForm.crud.edit:hover {
+    background-color: rgb(220, 157, 20);
+ }
+
+
+@keyframes songlist {
+from {
+    margin-top: -50px;
+    margin-left: -100px;
+    box-shadow: none;
+}
+to {
+    margin-left: 0%;
+    margin-top: 0px;
+    box-shadow: 5px 7px 5px 5px rgba(0, 0, 0, 0.473);
+}
+}
+
+.scroll-div:hover {
+    /* background-color: cadetblue; */
+    border-radius: 10px ;
+}

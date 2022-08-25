@@ -1,0 +1,62 @@
+form.uploadForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    width: 500px;
+    justify-content: space-between;
+    margin-left: 150px;
+    padding: 15px;
+    
+}
+
+ul.uploadForm {
+    color: aliceblue;
+}
+
+li.uploadForm {
+    margin-top: 5px;
+}
+
+label.uploadForm {
+    color: aliceblue;
+}
+
+
+button.uploadForm {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    background-color: rgba(240, 248, 255, 0.199);
+
+    color: aliceblue;
+    transition-property: all;
+    transition-duration: 1s;
+
+}
+
+button:hover.uploadForm, button:focus.uploadForm {
+    background-color: rgba(255, 255, 85, 0.637);
+    outline: none;
+}
+
+input.uploadForm {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    border: none;
+    background-color: rgba(236, 236, 236, 0.719);
+    padding: 6px;
+}
+
+input:focus.uploadForm {
+    background-color: rgba(236, 236, 236, 0.952);
+    outline: none;
+}
+
+.errors {
+    margin-top: 8px;
+}
