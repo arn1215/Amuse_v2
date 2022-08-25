@@ -71,4 +71,7 @@ You can choose to login as a demo user to try out the sites functionality.
 
 
 
+<<<<<<< HEAD
 # Ticketr
+=======
+>>>>>>> merge

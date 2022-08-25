@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /** @type {import('tailwindcss').Config} */ 
 module.exports = {
   content: [
@@ -12,3 +13,13 @@ module.exports = {
   },
   plugins: [require("daisyui")],
 }
+=======
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+>>>>>>> merge

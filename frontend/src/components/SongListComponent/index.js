@@ -5,7 +5,7 @@ import { clearSong, clearSongs, fetchLikedSongs, fetchSongs, likedSongs } from "
 import CommentContainer from '../CommentContainer';
 import LikeComponent from '../LikeComponent';
 import { FaPauseCircle, FaPlayCircle } from 'react-icons/fa'
-import banner from "./image4.jpg"
+import banner from "../SongListComponent/image4.jpg"
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
 
 import Player from '../PlayerComponent';
