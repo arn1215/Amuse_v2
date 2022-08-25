@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-/*
-! tailwindcss v3.1.8 | MIT License | https://tailwindcss.com
-*/
-=======
 /* TODO Add site wide styles */
 
 /* ! tailwindcss v3.1.8 | MIT License | https://tailwindcss.com */
->>>>>>> merge
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -560,8 +554,6 @@ video {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
-<<<<<<< HEAD
-=======
 }
 
 .visible {
@@ -1876,5 +1868,4 @@ li.errors {
 
 [data-popup='tooltip'].popup-overlay {
   background: transparent;
->>>>>>> merge
 }
