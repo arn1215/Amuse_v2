@@ -1,5 +1,4 @@
 
-import { useParams } from "react-router-dom"
 import csrfFetch from "./csrf"
 
 const CLEAR_SONG = 'songs/clearSong'
@@ -163,7 +162,7 @@ export const removeSong = (songId, userId) => async (dispatch) => {
 
 
     dispatch(deleteSong(songId))
-
+    return res
 }
 
 

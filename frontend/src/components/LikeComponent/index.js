@@ -46,7 +46,7 @@ const LikeComponent = ({song}) => {
         <div>
         { isLiked ? <FaHeart onClick={onClick} /> : <FaHeartBroken onClick={onClick} />}  
         <p>Likes: {likeList}</p>
-        </div> : null
+        </div> : <p style={{color: "white"}}>Log in to like songs</p>
     )
 }
 

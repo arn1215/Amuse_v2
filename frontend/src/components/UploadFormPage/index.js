@@ -115,7 +115,7 @@ const UploadFormPage = () => {
             console.log("imagepost entered")
         } else if (inputName === 'song') {
             const fileURL = await postToS3(url.split("?")[0], file);
-            console.log(inputName)
+            console.log(fileURL)
         }
         // dispatch(hideLoading());
         // if (inputName === 'song') return setSongURL(fileURL);

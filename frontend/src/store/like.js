@@ -42,7 +42,7 @@ export const removeLike = (like) => async (dispatch) => {
 
 
     dispatch(deleteLike(like))
-
+    return res
 }
 //REMOVE LIKE =================================================================
 

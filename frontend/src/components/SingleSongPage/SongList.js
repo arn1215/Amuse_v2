@@ -1,15 +1,11 @@
 import { useDispatch } from 'react-redux'
 import '../SongListComponent/songListStyles.css'
-import { fetchUserSongs, getUserSongs, removeSong } from '../../store/song'
+import { getUserSongs, removeSong } from '../../store/song'
 import EditFormModal from '../EditFormModal'
-import { useEffect, useState } from 'react'
-import CommentContainer from '../CommentContainer'
-import UploadFormPage from '../UploadFormPage'
-import Carousel from "react-multi-carousel";
+import { useState } from 'react'
 import "react-multi-carousel/lib/styles.css";
 import { FaRegTrashAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import Footer from '../FooterComponent'
 
 
 
