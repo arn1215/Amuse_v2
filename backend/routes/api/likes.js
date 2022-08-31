@@ -25,6 +25,8 @@ router.get("/:songId", asyncHandler(async(req,res) => {
 
 }))
 
+
+
 // router.get("/", asyncHandler(async(req,res) => {
 //     const songId = 1
 
@@ -37,6 +39,24 @@ router.get("/:songId", asyncHandler(async(req,res) => {
 //     res.json(likes)
 
 // }))
+
+
+router.get("/:userId/:songId", asyncHandler(async(req,res) => {
+    const {songId, userId} = req.params
+
+    const likes = await Like.findOne({
+        where: {
+          songId, 
+          userId  
+        }
+    });
+
+    if (likes) {
+        res.json({res: true})
+    } else {
+        res.json({res: false})
+    }
+}))
 
 
 

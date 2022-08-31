@@ -29,7 +29,7 @@ app.use(
 );
 
 // Set the _csrf token and create req.csrfToken method
-app.use(
+/* app.use(
   csurf({
     cookie: {
       secure: isProduction,
@@ -37,7 +37,9 @@ app.use(
       httpOnly: true
     }
   })
-);
+); */
+
+
 app.use(routes); // Connect all the routes
 
 // Catch unhandled requests and forward to error handler.

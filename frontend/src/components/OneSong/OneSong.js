@@ -13,17 +13,30 @@ const OneSong = () => {
   const dispatch = useDispatch()
   const id = parseInt(useParams().songId)
   const song = useSelector(state => state.songs[id])
+  const user = useSelector(state => state?.session?.user)
+
+
 
   const dateHelperFn = (date) => {
     let res;
     res = parseDate(`${date.split(".")[0]}Z`.replace("T", " "))
 
-    console.log("res", res)
     return res
   }
 
+
   useEffect(() => {
-    dispatch(fetchSongs())
+    dispatch(fetchSongs()) 
+    const fetchData = async () => {
+      const data = await fetch(`/api/likes/${user?.id}/${id}`)
+      console.log(data)
+      const json = await data.json()
+      const bool = JSON.stringify(json).split(":")[1].replace("}", "")
+      document.cookie = `isLiked = ${bool}`  
+    
+
+    }
+    fetchData()
   }, [dispatch])
 
   return (
@@ -43,9 +56,9 @@ const OneSong = () => {
                   {/* <button className="playerButtons" style={{all: 'unset', backgroundColor: '', height: 'fit-content'}}onClick={() => childFunc.current()}><FaPlay  /></button>
             <button className="playerButtons" style={{all: 'unset', backgroundColor: '', height: 'fit-content'}} onClick={() => childFunc2.current()}><FaPauseCircle  /></button> */}
                   {
-/*                     <div style={{ marginTop: "10px" }}>
+                    <div style={{ marginTop: "10px" }}>
                       <LikeComponent song={song} songId={song?.id} />
-                    </div> */
+                    </div>
                   }
                   <Link to={`/users/${song?.userId}`} style={{ marginLeft: "-14px", }}>See more from this artist!</Link>
                 </div>

@@ -70,7 +70,7 @@ export const addLike = (like) => async (dispatch) => {
 }
 //CREATE LIKE =================================================================
 
-const initialState = {}
+const initialState = { isLiked: {}}
 
 export const likeReducer = (state = initialState, action) => {
     let newState;
