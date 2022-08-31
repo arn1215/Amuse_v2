@@ -6,6 +6,8 @@ import CommentContainer from "../CommentContainer"
 import Player from "../PlayerComponent"
 import React, { useRef } from "react"
 import LikeComponent from "../LikeComponent"
+import { FaHeart, FaHeartBroken } from "react-icons/fa"
+import { addLike, fetchSongsLikes, removeLike } from "../../store/like"
 const parseDate = require('postgres-date')
 
 const OneSong = () => {
@@ -14,8 +16,7 @@ const OneSong = () => {
   const id = parseInt(useParams().songId)
   const song = useSelector(state => state.songs[id])
   const user = useSelector(state => state?.session?.user)
-
-
+  const [liked, setIsLiked] = useState("")
 
   const dateHelperFn = (date) => {
     let res;
@@ -24,19 +25,46 @@ const OneSong = () => {
     return res
   }
 
+  const onClick = async() => {
+        
+    const like = {
+        songId: id,
+        userId: user.id,
+    }
+    setIsLiked(!liked)
+    if (liked) {
+      
+        await dispatch(removeLike(like))
+        await dispatch(fetchSongsLikes(id)) 
+    
+    } else {
+        await dispatch(addLike(like))  
+        await dispatch(fetchSongsLikes(id))
+        
+    }
+    
+}
+
 
   useEffect(() => {
-    dispatch(fetchSongs()) 
+    dispatch(fetchSongs())
     const fetchData = async () => {
       const data = await fetch(`/api/likes/${user?.id}/${id}`)
       console.log(data)
       const json = await data.json()
       const bool = JSON.stringify(json).split(":")[1].replace("}", "")
-      document.cookie = `isLiked = ${bool}`  
-    
-
+      document.cookie = `isLiked = ${bool}`
     }
     fetchData()
+    console.log(document.cookie.split("isLiked")[1].replace(/["=]/g, ""))
+    const cookieData = async () => {
+      let bool = await document.cookie.split("isLiked")[1].replace(/["=]/g, "")
+      setIsLiked(bool)
+    }
+    setTimeout(() => {
+      setIsLiked(document.cookie.split("isLiked")[1].replace(/["=]/g, "") === "true" ? true : false)
+    }, 500)
+    console.log(liked, "HEY AGAIN")
   }, [dispatch])
 
   return (
@@ -48,16 +76,20 @@ const OneSong = () => {
               <div className="page-container">
                 <img className="songimg" src={song?.imageUrl} alt='cover art' />
                 <div className="container-for-details">
-                  <div style={{display: "flex", justifyContent: "space-between"}}>
-                  <h3 style={{ color: "white", width: "300px"}}>{song?.title}</h3>
-                  <p style={{color: 'white'}}>{dateHelperFn(song.createdAt).toString().slice(0, 15)}</p>
+                  <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <h3 style={{ color: "white", width: "300px" }}>{song?.title}</h3>
+                    <p style={{ color: 'white' }}>{dateHelperFn(song.createdAt).toString().slice(0, 15)}</p>
                   </div>
 
                   {/* <button className="playerButtons" style={{all: 'unset', backgroundColor: '', height: 'fit-content'}}onClick={() => childFunc.current()}><FaPlay  /></button>
             <button className="playerButtons" style={{all: 'unset', backgroundColor: '', height: 'fit-content'}} onClick={() => childFunc2.current()}><FaPauseCircle  /></button> */}
                   {
                     <div style={{ marginTop: "10px" }}>
-                      <LikeComponent song={song} songId={song?.id} />
+                      {user.id ?
+                      <div>
+                        {liked ? <FaHeart onClick={onClick} /> : <FaHeartBroken onClick={onClick} />}
+{/*                         <p>Likes: {likeList}</p> */}
+                      </div> : <p style={{ color: "white" }}>Log in to like songs</p>}
                     </div>
                   }
                   <Link to={`/users/${song?.userId}`} style={{ marginLeft: "-14px", }}>See more from this artist!</Link>

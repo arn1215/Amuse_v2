@@ -3,19 +3,20 @@ import { useEffect, useState } from 'react';
 import { addLike, fetchSongsLikes, removeLike } from '../../store/like';
 import { FaHeart, FaHeartBroken } from 'react-icons/fa';
 //destrucutre songId as a prop
-const LikeComponent = ({song}) => {
+const LikeComponent = ({song, liked}) => {
     
     const dispatch = useDispatch()
     const userId = useSelector(state => state?.session?.user?.id);
     // const song = useSelector(state => state.songs.song)
     const songId = song?.id
-    const [isLiked, setIsLiked] = useState(false)
+    const [isLiked, setIsLiked] = useState(liked === "true" ? true : false)
     const likeList = useSelector((state) => Object.values(state.likes).filter(like => like.songId === songId).length)
 
     useEffect(() => {
         console.log(songId)
         console.log(song, "THIS THE SONG")
-        dispatch(fetchSongsLikes(songId))      
+        dispatch(fetchSongsLikes(songId)) 
+        console.log( isLiked, "HEY")     
     }, [dispatch])
     
     // const singleSongLikes = likeList.filter(like => like.songId === songId)
