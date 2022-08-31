@@ -2,9 +2,13 @@
 
 @tailwind components;
 @tailwind utilities;
+
+
+
 * {
   font-family: 'inter', sans-serif;
   color: rgb(39, 39, 39);
+
 
 }
 
@@ -101,15 +105,12 @@ button:hover.nav-button, button:focus.nav-button {
   opacity: 1;
 }
 
-::-webkit-scrollbar {
-  width: .5em;
-  height: .5em;
-}
 
 
 
 
 
+/* 
 ::-webkit-scrollbar-track {
   background-color: #ececec;
 }
@@ -117,7 +118,7 @@ button:hover.nav-button, button:focus.nav-button {
 ::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.281);
 }
-
+ */
 
 body {
   width: 100%;
@@ -204,17 +205,20 @@ a.link {
   flex-direction: row;
   margin-top: 10%;
   -webkit-animation: anvil 0.18s cubic-bezier(0.38, 0.1, 0.36, 0.9);
-  background: linear-gradient(-45deg, #e38f4b, #ff790b, #d54c23, #d5b423);
+  background: linear-gradient(-45deg, #6e6d6c, #6d6762, #919eb6, #ff7300);
   background-size: 400% 400%;
-  animation: gradient 8s ease infinite;
+  animation: gradient 12s ease-in infinite;
   box-shadow: 0px 10px 15px 0px rgba(121, 121, 121, 0.5);
   width: 1000px;
 }
 
 .container-for-details {
   display: flex;
+  width: 100%;
   flex-direction: column;
+  justify-content: space-between;
   padding: 30px;
+  
 }
 
 textarea {
@@ -1292,6 +1296,8 @@ li.errors {
 
 .inner {
   height: 100%;
+  overflow-x: hidden; 
+
 }
 
 

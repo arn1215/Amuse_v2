@@ -69,7 +69,7 @@ const ProfilePage = () => {
     <>
       {artist.username &&
         <div className="outer" style={{ backgroundColor: " #dfdfdf", height: "91%", display: "flex", justifyContent: "center", marginTop: "-3px" }} >
-          <div className="inner" style={{ backgroundColor: "white", height: "100%", width: "65%", display: "flex", flexDirection: "column", overflow: "scroll" }}>
+          <div className="inner" style={{ backgroundColor: "white", height: "100%", width: "65%", display: "flex", flexDirection: "column"}}>
             <div className="banner" style={{ backgroundColor: "#ff9c40", height: "300px", display: "flex", alignItems: "center" }}>
               <a href={src} style={{ marginLeft: "10%" }}>
                 <img src={src} style={{ backgroundColor: "white", height: "220px", width: "220px", borderRadius: "50%", marginLeft: "10%" }} />

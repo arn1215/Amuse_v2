@@ -774,7 +774,7 @@ a.link {
   background: linear-gradient(-45deg, #e38f4b, #ff790b, #d54c23, #d5b423);
   background-size: 400% 400%;
   -webkit-animation: gradient 8s ease infinite;
-          animation: gradient 8s ease infinite;
+  animation: gradient 8s ease infinite;
   box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.5);
 }
 

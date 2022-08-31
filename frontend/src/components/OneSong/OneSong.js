@@ -35,17 +35,19 @@ const OneSong = () => {
               <div className="page-container">
                 <img className="songimg" src={song?.imageUrl} alt='cover art' />
                 <div className="container-for-details">
-                  <h3 style={{ color: "white" }}>{song?.title}</h3>
+                  <div style={{display: "flex", justifyContent: "space-between"}}>
+                  <h3 style={{ color: "white", width: "300px"}}>{song?.title}</h3>
+                  <p style={{color: 'white'}}>{dateHelperFn(song.createdAt).toString().slice(0, 15)}</p>
+                  </div>
 
                   {/* <button className="playerButtons" style={{all: 'unset', backgroundColor: '', height: 'fit-content'}}onClick={() => childFunc.current()}><FaPlay  /></button>
             <button className="playerButtons" style={{all: 'unset', backgroundColor: '', height: 'fit-content'}} onClick={() => childFunc2.current()}><FaPauseCircle  /></button> */}
                   {
-                    <div style={{ marginTop: "70px" }}>
+/*                     <div style={{ marginTop: "10px" }}>
                       <LikeComponent song={song} songId={song?.id} />
-                    </div>
+                    </div> */
                   }
-                  <p style={{color: 'white'}}>{dateHelperFn(song.createdAt).toString().slice(0, 15)}</p>
-                  <Link to={`/users/${song?.userId}`} style={{ marginLeft: "-14px" }}>See more from this artist!</Link>
+                  <Link to={`/users/${song?.userId}`} style={{ marginLeft: "-14px", }}>See more from this artist!</Link>
                 </div>
               </div>
             </div>
