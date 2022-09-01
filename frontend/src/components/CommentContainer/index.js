@@ -18,7 +18,7 @@ const CommentContainer = ({ songId }) => {
         let res;
         res = parseDate(`${date.split(".")[0]}Z`.replace("T", " "))
 
-        console.log("res", res)
+
         return res
     }
 
@@ -69,7 +69,7 @@ const CommentContainer = ({ songId }) => {
                 {user ?
                     commentList.map(comment => songId === comment.songId && user.id === comment.userId ?
                         <>
-                            <div style={{ display: 'flex', justifyContent: "space-between" }}>
+                            <div key={comment.id} style={{ display: 'flex', justifyContent: "space-between" }}>
                                 <p className="userName" style={{ fontSize: '12px' }}>{comment.userName}</p>
                                 <div>
                                     <p style={{ fontSize: '12px' }}>{dateHelperFn(comment.createdAt).toString().slice(0, 15)}</p>
