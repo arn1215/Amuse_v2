@@ -90,7 +90,7 @@ const OneSong = () => {
                       {user?.id ?
                       <div style={{ color: 'red'}}>
                         
-                        {liked === false ?   <i style={{cursor: 'pointer',fontSize:'40px', color: 'white'}} class="fa fa-thumbs-up" onClick={onClick}></i> : <i style={{cursor: 'pointer',fontSize:'40px', color: '#82ffba'}} class="fa fa-thumbs-up" onClick={onClick}></i>}
+                        {liked === false ?   <i style={{cursor: 'pointer',fontSize:'40px', color: 'white'}} className="fa fa-thumbs-up " onClick={onClick}></i> : <i style={{cursor: 'pointer',fontSize:'40px', color: '#82ffba'}} className="fa fa-thumbs-up animation" onClick={onClick}></i>}
 {/*                         <p>Likes: {likeList}</p> */}
                       </div> : null}
                     </div>
