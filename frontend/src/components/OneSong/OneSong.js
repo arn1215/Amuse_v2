@@ -16,7 +16,7 @@ const OneSong = () => {
   const id = parseInt(useParams().songId)
   const song = useSelector(state => state.songs[id])
   const user = useSelector(state => state?.session?.user)
-  const [liked, setIsLiked] = useState(false)
+  const [liked, setIsLiked] = useState("false")
 
   const dateHelperFn = (date) => {
     let res;
@@ -57,17 +57,17 @@ const OneSong = () => {
     }
     if (user) {
       fetchData()
+      const cookieData = async () => {
+        let bool = await document.cookie.split("isLiked")[1].replace(/["=]/g, "")
+        setIsLiked(bool)
+      }
+      setTimeout(() => {
+        setIsLiked(document.cookie.split("isLiked")[1].replace(/["=]/g, "") === "true" ? true : false)
+      }, 500)
     }
    
-    const cookieData = async () => {
-      let bool = await document.cookie.split("isLiked")[1].replace(/["=]/g, "")
-      setIsLiked(bool)
-    }
-    setTimeout(() => {
-      setIsLiked(document.cookie.split("isLiked")[1].replace(/["=]/g, "") === "true" ? true : false)
-    }, 500)
     console.log(liked, "HEY AGAIN")
-  }, [dispatch])
+  }, [liked])
 
   return (
     <>
@@ -83,14 +83,12 @@ const OneSong = () => {
                     <p style={{ color: 'white' }}>{dateHelperFn(song.createdAt).toString().slice(0, 15)}</p>
                   </div>
 
-                  {/* <button className="playerButtons" style={{all: 'unset', backgroundColor: '', height: 'fit-content'}}onClick={() => childFunc.current()}><FaPlay  /></button>
-            <button className="playerButtons" style={{all: 'unset', backgroundColor: '', height: 'fit-content'}} onClick={() => childFunc2.current()}><FaPauseCircle  /></button> */}
-                  {
+
                     <div style={{ marginTop: "10px" }}>
                       {user?.id ?
                       <div style={{ color: 'red'}}>
                         
-                        {liked === false ?   <i style={{cursor: 'pointer',fontSize:'40px', color: 'white'}} className="fa fa-thumbs-up " onClick={onClick}></i> : <i style={{cursor: 'pointer',fontSize:'40px', color: '#82ffba'}} className="fa fa-thumbs-up animation" onClick={onClick}></i>}
+                        {liked !== false ?   <i style={{cursor: 'pointer',fontSize:'40px', color: 'white'}} class="fa fa-thumbs-up" onClick={onClick}></i> :  <i style={{cursor: 'pointer',fontSize:'40px', color: '#82ffba'}} class="fa fa-thumbs-up" onClick={onClick}></i>}
 {/*                         <p>Likes: {likeList}</p> */}
                       </div> : null}
                     </div>
