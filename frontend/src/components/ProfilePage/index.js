@@ -11,7 +11,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import EditForm from "../EditFormModal/EditForm";
 import EditFormModal from "../EditFormModal";
-import ScaleLoader from "react-spinners"
+
 
 
 const ProfilePage = () => {
@@ -97,7 +97,8 @@ const ProfilePage = () => {
                         </Popup>
                       </>
                       : <h5 style={{ marginTop: "3%" }}>{song.title}</h5>}
-                    {song?.id === currentSong?.id ? <ScaleLoader /> : null}
+                    {/* {song?.id === currentSong?.id ? <ScaleLoader /> : null} */}
+                    {song?.id === currentSong?.id ? "" : null}
                   </div>
                   <Popup trigger={<div className="bars" style={{ marginBottom: "100px", marginLeft: "30px" }}><FaBars /></div>} position="right center">
                     {userId === song.userId ?
