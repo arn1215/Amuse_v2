@@ -11,6 +11,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import EditForm from "../EditFormModal/EditForm";
 import EditFormModal from "../EditFormModal";
+import ScaleLoader from "react-spinners"
 
 
 const ProfilePage = () => {
