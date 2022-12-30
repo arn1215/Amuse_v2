@@ -25,25 +25,25 @@ const OneSong = () => {
     return res
   }
 
-  const onClick = async() => {
-        
+  const onClick = async () => {
+
     const like = {
-        songId: id,
-        userId: user.id,
+      songId: id,
+      userId: user.id,
     }
     setIsLiked(!liked)
     if (liked) {
-      
-        await dispatch(removeLike(like))
-        await dispatch(fetchSongsLikes(id)) 
-    
+
+      await dispatch(removeLike(like))
+      await dispatch(fetchSongsLikes(id))
+
     } else {
-        await dispatch(addLike(like))  
-        await dispatch(fetchSongsLikes(id))
-        
+      await dispatch(addLike(like))
+      await dispatch(fetchSongsLikes(id))
+
     }
-    
-}
+
+  }
 
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const OneSong = () => {
         setIsLiked(document.cookie.split("isLiked")[1].replace(/["=]/g, "") === "true" ? true : false)
       }, 500)
     }
-   
+
     console.log(liked, "HEY AGAIN")
   }, [liked])
 
@@ -84,15 +84,15 @@ const OneSong = () => {
                   </div>
 
 
-                    <div style={{ marginTop: "10px" }}>
-                      {user?.id ?
-                      <div style={{ color: 'red'}}>
-                        
-                        {liked !== false ?   <i style={{cursor: 'pointer',fontSize:'40px', color: 'white'}} class="fa fa-thumbs-up" onClick={onClick}></i> :  <i style={{cursor: 'pointer',fontSize:'40px', color: '#82ffba'}} class="fa fa-thumbs-up" onClick={onClick}></i>}
-{/*                         <p>Likes: {likeList}</p> */}
+                  <div style={{ marginTop: "10px" }}>
+                    {user?.id ?
+                      <div style={{ color: 'red' }}>
+
+                        {liked !== false ? <i style={{ cursor: 'pointer', fontSize: '40px', color: 'white' }} class="fa fa-thumbs-up" onClick={onClick}></i> : <i style={{ cursor: 'pointer', fontSize: '40px', color: '#82ffba' }} class="fa fa-thumbs-up" onClick={onClick}></i>}
+                        {/*                         <p>Likes: {likeList}</p> */}
                       </div> : null}
-                    </div>
-                  }
+                  </div>
+
                   <Link to={`/users/${song?.userId}`} style={{ marginLeft: "-14px", }}>See more from this artist!</Link>
                 </div>
               </div>
