@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect, useHistory, useParams } from "react-router-dom";
 import { clearSongs, editSong, fetchArtist, fetchSongs, removeSong } from "../../store/song";
 import Player from "../PlayerComponent";
-import { ScaleLoader } from "react-spinners";
 import { FaBackspace, FaBackward, FaBars, FaClock, FaEdit, FaRegSave, FaSave, FaTrash, FaXbox } from "react-icons/fa";
 import 'react-h5-audio-player/lib/styles.css'
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
@@ -51,7 +50,7 @@ const ProfilePage = () => {
       userId,
       songId: isEditing?.id
     }
-    
+
     dispatch(editSong(song))
 
 
@@ -69,7 +68,7 @@ const ProfilePage = () => {
     <>
       {artist.username &&
         <div className="outer" style={{ backgroundColor: " #dfdfdf", height: "91%", display: "flex", justifyContent: "center", marginTop: "-3px" }} >
-          <div className="inner" style={{ backgroundColor: "white", height: "100%", width: "65%", display: "flex", flexDirection: "column"}}>
+          <div className="inner" style={{ backgroundColor: "white", height: "100%", width: "65%", display: "flex", flexDirection: "column" }}>
             <div className="banner" style={{ backgroundColor: "#ff9c40", height: "300px", display: "flex", alignItems: "center" }}>
               <a href={src} style={{ marginLeft: "10%" }}>
                 <img src={src} style={{ backgroundColor: "white", height: "220px", width: "220px", borderRadius: "50%", marginLeft: "10%" }} />
@@ -88,12 +87,12 @@ const ProfilePage = () => {
                   <div className="songInfo" style={{ height: "80%", width: "60%", marginLeft: "15px" }}>
                     {isEditing.editing && song.id === isEditing?.id ?
                       <>
-                        <Popup 
-                        open={isEditing}
-                        modal
-                        onClose={() => setIsEditing(!isEditing)}
+                        <Popup
+                          open={isEditing}
+                          modal
+                          onClose={() => setIsEditing(!isEditing)}
                         >
-                        <EditForm song={song} id={song.id} active={isEditing} />
+                          <EditForm song={song} id={song.id} active={isEditing} />
                         </Popup>
                       </>
                       : <h5 style={{ marginTop: "3%" }}>{song.title}</h5>}
@@ -117,12 +116,12 @@ const ProfilePage = () => {
                 </div>
               )
             })}
-            
+
           </div>
 
         </div>
       }
-   
+
       <>
 
         <AudioPlayer
